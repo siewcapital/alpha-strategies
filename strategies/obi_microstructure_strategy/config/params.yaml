@@ -1,0 +1,29 @@
+# Strategy Configuration
+
+# Order Book Imbalance Thresholds
+obi_long_threshold: 0.4
+obi_short_threshold: -0.4
+obi_depth_threshold: 0.3
+
+# Signal Confirmation
+persistence_ticks: 3
+spread_max_bps: 5.0
+vol_velocity_threshold: 0.5
+
+# Risk Management
+max_holding_seconds: 30
+profit_target_bps: 5.0
+stop_loss_bps: 3.0
+trailing_stop_bps: 3.0
+
+# Technical Parameters
+micro_ema_span: 50
+
+# Confirmation Settings
+use_rsi_confirmation: true
+use_volume_confirmation: true
+use_trend_confirmation: true
+rsi_overbought: 70
+rsi_oversold: 30
+volume_percentile_threshold: 60
+signal_cooldown_seconds: 5

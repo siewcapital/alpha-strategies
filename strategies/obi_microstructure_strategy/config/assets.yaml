@@ -1,0 +1,48 @@
+# Asset Configuration for OBI Strategy
+
+assets:
+  BTCUSDT:
+    symbol: BTCUSDT
+    base_asset: BTC
+    quote_asset: USDT
+    tick_size: 0.10
+    lot_size: 0.001
+    min_notional: 100.0
+    max_leverage: 125
+    enabled: true
+    weight: 0.5
+    
+  ETHUSDT:
+    symbol: ETHUSDT
+    base_asset: ETH
+    quote_asset: USDT
+    tick_size: 0.01
+    lot_size: 0.01
+    min_notional: 100.0
+    max_leverage: 100
+    enabled: true
+    weight: 0.3
+    
+  SOLUSDT:
+    symbol: SOLUSDT
+    base_asset: SOL
+    quote_asset: USDT
+    tick_size: 0.001
+    lot_size: 0.1
+    min_notional: 100.0
+    max_leverage: 50
+    enabled: true
+    weight: 0.2
+
+# Exchange Settings
+exchange:
+  name: binance
+  testnet: true
+  fee_maker: 0.0002  # 2 bps
+  fee_taker: 0.0005  # 5 bps
+
+# Data Feed Settings
+data:
+  levels: 5  # Order book levels to track
+  tick_frequency_ms: 100
+  use_websocket: true
