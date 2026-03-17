@@ -1,0 +1,91 @@
+2026-03-17 18:19:19,881 - __main__ - INFO - ============================================================
+2026-03-17 18:19:19,882 - __main__ - INFO - CROSS-EXCHANGE FUNDING ARBITRAGE - BACKTEST MODE
+2026-03-17 18:19:19,882 - __main__ - INFO - ============================================================
+2026-03-17 18:19:19,884 - strategy - INFO - FundingArbitrageStrategy initialized
+2026-03-17 18:19:19,884 - __main__ - INFO - Loading data from 2021-01-01 to 2026-01-01...
+2026-03-17 18:19:20,020 - __main__ - INFO - 
+Funding Rate Statistics:
+2026-03-17 18:19:20,023 - __main__ - INFO - 
+Running backtest...
+2026-03-17 18:19:20,023 - backtest - INFO - Starting backtest run...
+2026-03-17 18:19:20,024 - backtest - INFO - Initial capital: $100,000.00
+2026-03-17 18:19:20,024 - strategy - INFO - Strategy started
+2026-03-17 18:19:20,102 - backtest - INFO - Processing 5478 periods
+2026-03-17 18:19:20,140 - src.signal_generator - INFO - Generated ENTRY signal for ETHUSDT: Long binance / Short okx, Size: $29,689.45, Diff: 0.0774%
+2026-03-17 18:19:20,140 - src.signal_generator - INFO - Generated ENTRY signal for ETHUSDT: Long gateio / Short okx, Size: $26,643.27, Diff: 0.0520%
+2026-03-17 18:19:20,140 - src.signal_generator - INFO - Generated ENTRY signal for ETHUSDT: Long binance / Short bybit, Size: $25,568.29, Diff: 0.0431%
+2026-03-17 18:19:20,140 - src.signal_generator - INFO - Generated ENTRY signal for ETHUSDT: Long bybit / Short okx, Size: $23,053.30, Diff: 0.0343%
+2026-03-17 18:19:20,140 - src.signal_generator - INFO - Generated ENTRY signal for ETHUSDT: Long binance / Short gateio, Size: $16,292.98, Diff: 0.0254%
+2026-03-17 18:19:20,140 - src.signal_generator - INFO - Generated ENTRY signal for SOLUSDT: Long bybit / Short okx, Size: $12,528.80, Diff: 0.0201%
+2026-03-17 18:19:20,140 - strategy - INFO - Generated 6 entry signals
+2026-03-17 18:19:20,141 - src.signal_generator - INFO - Registered new position: ETHUSDT:binance:okx
+2026-03-17 18:19:20,141 - strategy - INFO - Executed ENTRY: ETHUSDT $12,609.31 Long@binance Short@okx
+2026-03-17 18:19:20,141 - src.signal_generator - INFO - Registered new position: ETHUSDT:gateio:okx
+2026-03-17 18:19:20,141 - strategy - INFO - Executed ENTRY: ETHUSDT $9,061.13 Long@gateio Short@okx
+2026-03-17 18:19:20,141 - src.signal_generator - INFO - Registered new position: ETHUSDT:binance:bybit
+2026-03-17 18:19:20,141 - strategy - INFO - Executed ENTRY: ETHUSDT $7,932.06 Long@binance Short@bybit
+2026-03-17 18:19:20,141 - src.signal_generator - INFO - Registered new position: ETHUSDT:bybit:okx
+2026-03-17 18:19:20,141 - strategy - INFO - Executed ENTRY: ETHUSDT $5,401.07 Long@bybit Short@okx
+2026-03-17 18:19:20,141 - src.signal_generator - INFO - Registered new position: ETHUSDT:binance:gateio
+2026-03-17 18:19:20,141 - strategy - INFO - Executed ENTRY: ETHUSDT $3,411.79 Long@binance Short@gateio
+2026-03-17 18:19:20,141 - src.signal_generator - INFO - Registered new position: SOLUSDT:bybit:okx
+2026-03-17 18:19:20,141 - strategy - INFO - Executed ENTRY: SOLUSDT $2,438.47 Long@bybit Short@okx
+2026-03-17 18:19:20,141 - backtest - INFO - [2021-01-01 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:19:24,005 - backtest - INFO - [2021-02-03 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:19:28,416 - backtest - INFO - [2021-03-08 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:19:33,185 - backtest - INFO - [2021-04-11 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:19:37,225 - backtest - INFO - [2021-05-14 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:19:41,566 - backtest - INFO - [2021-06-16 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:19:47,949 - backtest - INFO - [2021-07-20 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:19:54,062 - backtest - INFO - [2021-08-22 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:01,006 - backtest - INFO - [2021-09-24 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:07,472 - backtest - INFO - [2021-10-28 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:16,018 - backtest - INFO - [2021-11-30 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:21,180 - backtest - INFO - [2022-01-02 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:24,891 - backtest - INFO - [2022-02-05 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:30,442 - backtest - INFO - [2022-03-10 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:34,615 - backtest - INFO - [2022-04-12 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:37,993 - backtest - INFO - [2022-05-16 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:41,961 - backtest - INFO - [2022-06-18 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:46,561 - backtest - INFO - [2022-07-21 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:49,594 - backtest - INFO - [2022-08-24 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:53,295 - backtest - INFO - [2022-09-26 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:20:56,952 - backtest - INFO - [2022-10-29 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:01,949 - backtest - INFO - [2022-12-02 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:06,578 - backtest - INFO - [2023-01-04 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:10,319 - backtest - INFO - [2023-02-06 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:14,904 - backtest - INFO - [2023-03-12 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:18,178 - backtest - INFO - [2023-04-14 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:21,757 - backtest - INFO - [2023-05-17 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:25,045 - backtest - INFO - [2023-06-20 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:28,872 - backtest - INFO - [2023-07-23 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:31,834 - backtest - INFO - [2023-08-25 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:35,386 - backtest - INFO - [2023-09-28 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:38,797 - backtest - INFO - [2023-10-31 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:42,008 - backtest - INFO - [2023-12-03 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:44,787 - backtest - INFO - [2024-01-06 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:48,076 - backtest - INFO - [2024-02-08 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:51,539 - backtest - INFO - [2024-03-12 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:54,806 - backtest - INFO - [2024-04-15 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:21:58,988 - backtest - INFO - [2024-05-18 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:02,912 - backtest - INFO - [2024-06-20 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:06,373 - backtest - INFO - [2024-07-24 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:14,270 - backtest - INFO - [2024-08-26 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:22,460 - backtest - INFO - [2024-09-28 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:26,778 - backtest - INFO - [2024-11-01 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:32,248 - backtest - INFO - [2024-12-04 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:37,364 - backtest - INFO - [2025-01-06 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:40,807 - backtest - INFO - [2025-02-09 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:44,151 - backtest - INFO - [2025-03-14 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:47,852 - backtest - INFO - [2025-04-16 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:51,449 - backtest - INFO - [2025-05-20 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:54,552 - backtest - INFO - [2025-06-22 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:22:58,154 - backtest - INFO - [2025-07-25 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:23:01,816 - backtest - INFO - [2025-08-28 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:23:04,750 - backtest - INFO - [2025-09-30 08:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:23:08,744 - backtest - INFO - [2025-11-02 16:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:23:14,204 - backtest - INFO - [2025-12-06 00:00:00] Equity: $100,000.00 | Open: 0 | Closed: 0 | DD: 0.00%
+2026-03-17 18:23:18,355 - strategy - INFO - Strategy stopped
+2026-03-17 18:23:18,355 - backtest - INFO - Backtest complete
+2026-03-17 18:23:18,355 - backtest - INFO - Final capital: $100,000.00
+2026-03-17 18:23:18,355 - backtest - INFO - Total return: 0.00%

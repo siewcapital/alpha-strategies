@@ -1,0 +1,68 @@
+# Cross-Exchange Funding Rate Arbitrage Strategy Configuration
+
+strategy:
+  # Entry/Exit thresholds
+  entry_threshold: 0.0002        # 0.02% minimum funding differential
+  exit_threshold: 0.00005        # 0.005% convergence threshold
+  min_annualized_return: 0.08    # 8% minimum annualized return
+  
+  # Position management
+  max_positions: 5               # Maximum concurrent positions
+  max_position_size_usd: 50000   # $50k max per position
+  default_leverage: 2.0          # 2x default leverage
+  
+  # Time parameters
+  funding_interval_hours: 8.0    # 8-hour funding intervals
+  max_hold_hours: 72.0           # Maximum hold time (3 days)
+  min_hold_periods: 2            # Minimum 2 funding periods
+  
+  # Risk parameters
+  max_drawdown_pct: 0.10         # 10% max drawdown
+  max_daily_loss_pct: 0.02       # 2% daily loss limit
+  
+  # Exchange configuration
+  exchanges:
+    - binance
+    - bybit
+    - okx
+    - gateio
+  
+  symbols:
+    - BTCUSDT
+    - ETHUSDT
+    - SOLUSDT
+    - AVAXUSDT
+
+# Risk Limits
+risk:
+  max_position_size_usd: 50000
+  max_total_exposure_usd: 200000
+  max_positions_per_symbol: 2
+  max_total_positions: 10
+  
+  max_leverage_long: 3.0
+  max_leverage_short: 3.0
+  
+  max_daily_drawdown_pct: 0.02
+  max_total_drawdown_pct: 0.10
+  
+  max_daily_loss_usd: 5000
+  max_consecutive_losses: 3
+  
+  max_funding_volatility_entry: 0.001
+  min_liquidation_buffer: 0.10
+  
+  max_exposure_per_exchange_pct: 0.30
+
+# Execution Parameters
+execution:
+  order_type: "limit"            # Prefer limit orders for maker fees
+  max_slippage_bps: 5            # 5 basis points max slippage
+  retry_attempts: 3
+  retry_delay_ms: 100
+  
+# Monitoring
+monitoring:
+  log_level: "INFO"
+  metrics_interval_seconds: 60
+  health_check_interval_seconds: 300
