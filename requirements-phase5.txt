@@ -1,0 +1,7 @@
+# Phase 5 Requirements
+flask>=2.3.0
+flask-socketio>=5.3.0
+ccxt>=4.2.0
+pandas>=2.0.0
+numpy>=1.24.0
+python-socketio[client]

@@ -1,0 +1,62 @@
+{
+  "timestamp": "2026-03-20T06:59:52.704339",
+  "tests": {
+    "public_data": {
+      "status": "passed",
+      "tests": {
+        "funding_rate": {
+          "status": "passed",
+          "rate": -1.11e-05,
+          "mark_price": 70158.10930435
+        },
+        "all_funding_rates": {
+          "status": "passed",
+          "count": 657
+        },
+        "ticker": {
+          "status": "passed",
+          "bid": null,
+          "ask": null
+        },
+        "ohlcv": {
+          "status": "passed",
+          "candles": 24,
+          "latest_close": 70153.4
+        }
+      }
+    },
+    "multi_exchange": {
+      "status": "passed",
+      "tests": {
+        "multi_fetch": {
+          "status": "passed",
+          "exchanges": [
+            "binance"
+          ]
+        },
+        "differentials": {
+          "status": "no_data"
+        }
+      }
+    },
+    "authenticated": {
+      "status": "skipped",
+      "tests": {},
+      "reason": "no_credentials"
+    },
+    "paper_trading": {
+      "status": "passed",
+      "tests": {
+        "data_requirements": {
+          "status": "passed",
+          "symbols_data": 3
+        },
+        "arbitrage_detection": {
+          "status": "passed",
+          "max_differential_bps": 0.6456
+        }
+      }
+    }
+  },
+  "overall_status": "passed"
+}

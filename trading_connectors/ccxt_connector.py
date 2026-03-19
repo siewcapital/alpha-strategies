@@ -145,22 +145,38 @@ class CCXTExchangeConnector:
         
         return exchange
     
+    def _normalize_symbol(self, symbol: str) -> str:
+        """Normalize symbol to CCXT unified format."""
+        # If already in unified format, return as-is
+        if ':' in symbol and '/' in symbol:
+            return symbol
+        
+        # Handle 'BTCUSDT' format
+        if '/' not in symbol and 'USDT' in symbol:
+            base = symbol.replace('USDT', '')
+            return f"{base}/USDT:USDT"
+        
+        # Handle 'BTC/USDT' format
+        if '/' in symbol and ':' not in symbol:
+            return f"{symbol}:USDT"
+        
+        return symbol
+    
     async def get_funding_rate(self, symbol: str) -> Optional[FundingRateData]:
         """
         Fetch current funding rate for a symbol.
         
         Args:
-            symbol: Trading pair (e.g., 'BTC/USDT:USDT')
+            symbol: Trading pair (e.g., 'BTCUSDT', 'BTC/USDT:USDT')
         
         Returns:
             FundingRateData or None if error
         """
         try:
-            # CCXT uses unified symbols like 'BTC/USDT:USDT' for perps
-            if '/' not in symbol:
-                symbol = f"{symbol}/USDT:USDT"
+            symbol = self._normalize_symbol(symbol)
             
-            funding = await self.exchange.fetch_funding_rate(symbol)
+            # fetch_funding_rate is synchronous in CCXT
+            funding = self.exchange.fetch_funding_rate(symbol)
             
             return FundingRateData(
                 exchange=self.exchange_id,
@@ -180,12 +196,13 @@ class CCXTExchangeConnector:
     async def get_all_funding_rates(self) -> List[FundingRateData]:
         """Fetch funding rates for all perpetual futures."""
         try:
-            funding_rates = await self.exchange.fetch_funding_rates()
+            # fetch_funding_rates is synchronous in CCXT
+            funding_rates = self.exchange.fetch_funding_rates()
             
             results = []
             for symbol, data in funding_rates.items():
                 # Filter for USDT perpetuals only
-                if ':USDT' in symbol:
+                if ':USDT' in symbol or 'USDT' in symbol:
                     results.append(FundingRateData(
                         exchange=self.exchange_id,
                         symbol=symbol,
@@ -206,10 +223,10 @@ class CCXTExchangeConnector:
     async def get_ticker(self, symbol: str) -> Optional[TickerData]:
         """Fetch current ticker data."""
         try:
-            if '/' not in symbol:
-                symbol = f"{symbol}/USDT:USDT"
+            symbol = self._normalize_symbol(symbol)
             
-            ticker = await self.exchange.fetch_ticker(symbol)
+            # fetch_ticker is synchronous in CCXT
+            ticker = self.exchange.fetch_ticker(symbol)
             
             return TickerData(
                 exchange=self.exchange_id,
@@ -245,10 +262,10 @@ class CCXTExchangeConnector:
             DataFrame with OHLCV data
         """
         try:
-            if '/' not in symbol:
-                symbol = f"{symbol}/USDT:USDT"
+            symbol = self._normalize_symbol(symbol)
             
-            ohlcv = await self.exchange.fetch_ohlcv(symbol, timeframe, since, limit)
+            # fetch_ohlcv is synchronous in CCXT
+            ohlcv = self.exchange.fetch_ohlcv(symbol, timeframe, since, limit)
             
             df = pd.DataFrame(
                 ohlcv,
@@ -284,8 +301,7 @@ class CCXTExchangeConnector:
             Order dict or None
         """
         try:
-            if '/' not in symbol:
-                symbol = f"{symbol}/USDT:USDT"
+            symbol = self._normalize_symbol(symbol)
             
             params = params or {}
             order = await self.exchange.create_limit_order(
@@ -307,8 +323,7 @@ class CCXTExchangeConnector:
     ) -> Optional[Dict]:
         """Create a market order."""
         try:
-            if '/' not in symbol:
-                symbol = f"{symbol}/USDT:USDT"
+            symbol = self._normalize_symbol(symbol)
             
             params = params or {}
             order = await self.exchange.create_market_order(
@@ -346,7 +361,9 @@ class CCXTExchangeConnector:
     
     async def close(self):
         """Close exchange connection."""
-        await self.exchange.close()
+        # CCXT doesn't have an async close method
+        # Just clean up the exchange reference
+        self.exchange = None
 
 
 class MultiExchangeConnector:
