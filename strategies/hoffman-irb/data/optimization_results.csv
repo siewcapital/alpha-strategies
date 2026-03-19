@@ -1,0 +1,4 @@
+Configuration,R:R,EMA,Return,Sharpe,Max DD,Win Rate,Profit Factor
+Conservative,2.0,30,2052.58%,1.844,-54.44%,56.7%,1.21
+Aggressive,1.2,10,-70.09%,0.073,-87.86%,63.1%,0.94
+Balanced,1.5,20,139.56%,0.965,-69.89%,61.2%,1.06
