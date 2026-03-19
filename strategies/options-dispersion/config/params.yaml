@@ -1,0 +1,92 @@
+# Options Dispersion Trading Strategy Configuration
+# Correlation arbitrage via index vs single-stock options
+
+strategy:
+  name: "Options Dispersion Trading"
+  type: "correlation_arbitrage"
+  version: "1.0.0"
+  
+# Index configuration
+index:
+  symbol: "SPY"  # SPDR S&P 500 ETF
+  weight_threshold: 0.001  # Minimum weight for inclusion (0.1%)
+  max_constituents: 50  # Trade subset for practicality
+  
+# Constituent selection
+constituents:
+  selection_method: "liquidity_weighted"  # liquidity_weighted, equal_weight, sector_balanced
+  min_option_volume: 1000  # Minimum daily option volume
+  min_market_cap: 10_000_000_000  # $10B minimum
+  rebalance_frequency: "monthly"  # How often to refresh constituent list
+
+# Signal parameters
+signals:
+  correlation:
+    lookback_window: 90  # Days for historical correlation calculation
+    z_score_threshold_long: 2.0  # Enter long dispersion when z-score > this
+    z_score_threshold_exit: 0.0  # Exit when reverts to mean
+    z_score_threshold_short: -2.0  # Reverse position when z-score < this
+    
+  volatility:
+    vix_max: 35  # Don't trade when VIX > this
+    vix_min: 10  # Don't trade when VIX < this (no premium)
+    
+  trend_filter:
+    atr_lookback: 20
+    max_atr_multiple: 2.0  # Avoid if index moved > 2 ATR recently
+
+# Position sizing
+position_sizing:
+  method: "vega_target"  # vega_target, notional, kelly
+  target_vega_exposure: 0.001  # 0.1% of portfolio per trade
+  max_vega_exposure: 0.005  # 0.5% max total vega
+  max_correlation_exposure: 0.01  # Max 1% at risk from correlation jump
+
+# Options parameters
+options:
+  strategy_type: "straddle"  # straddle, strangle, iron_condor
+  days_to_expiration: 30  # Target DTE for entry
+  delta_target: 0.50  # For straddles (ATM)
+  delta_range: [0.45, 0.55]  # Acceptable delta range
+  min_days_to_expiry: 7  # Roll before this
+  
+  # For strangles (if strategy_type = strangle)
+  call_delta_target: 0.30
+  put_delta_target: -0.30
+
+# Risk management
+risk_management:
+  stop_loss:
+    implied_correlation_move: 3.0  # Exit if correlation moves > 3 std devs
+    max_loss_per_trade: 0.02  # 2% max loss per trade
+    
+  time_stop:
+    max_hold_days: 30  # Force exit after this many days
+    
+  delta_hedge:
+    frequency: "daily"  # daily, threshold, continuous
+    threshold: 0.10  # Rehedge when delta moves > 0.10
+    
+  greek_limits:
+    max_delta_exposure: 0.10  # Net delta as % of portfolio
+    max_gamma_exposure: 0.001  # Gamma limit
+    max_theta_exposure: -0.0005  # Theta limit (income floor)
+
+# Execution
+execution:
+  slippage_bps: 5  # Bid-ask spread assumption (basis points)
+  commission_per_contract: 0.65  # IBKR-like commission
+  exercise_fee: 0.00  # Assignment fee
+
+# Backtest parameters
+backtest:
+  start_date: "2019-01-01"
+  end_date: "2024-12-31"
+  initial_capital: 1_000_000
+  
+# Output
+output:
+  save_trades: true
+  save_greeks: true
+  save_correlation_history: true
+  plot_results: true

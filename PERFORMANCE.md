@@ -10,6 +10,9 @@
 | Cross-Exchange Funding Arb | ✅ Implemented | Market Neutral | 8-hour cycles |
 | SOL RSI Mean Reversion | ✅ Backtested | Trend-Following Mean Reversion | 1H |
 | OBI Microstructure | ✅ Backtested | Microstructure Scalping | 1-minute |
+| Hoffman IRB | ✅ Validated | Trend-Following Pullback | 1H |
+| VRP Harvester | ✅ Implemented | Short Volatility | Option Expiry |
+| Options Dispersion | ✅ Architecture | Correlation Arbitrage | 30-day |
 
 ---
 
@@ -20,8 +23,11 @@
 | Strategy | Total Return | Win Rate | Profit Factor | Max DD | Sharpe |
 |----------|-------------|----------|---------------|--------|--------|
 | **Polymarket HFT** | +2,645% | 58% | 2.9+ | ~15% | 3.5+ |
+| **Hoffman IRB (BTC)** | +139.56% | 61.2% | 1.06 | 31.5% | 0.96 |
 | **Funding Arb** | +15-25% APR | 65-75% | 2.1+ | 5-8% | 2.0+ |
+| **VRP Harvester** | +18-28% APR | 60-68% | 1.5+ | 12-18% | 1.4-2.0 |
 | **SOL RSI** | -5.1% | 50% | 0.82 | 11.5% | -0.35 |
+| **Options Dispersion** | N/A (Data) | 28.6% (Syn) | N/A | 40% (Syn)| -0.02 (Syn) |
 | **OBI Micro** | -33.8% | 25% | 0.22 | 33.8% | -232 |
 
 ### Risk-Adjusted Rankings

@@ -22,8 +22,11 @@ Collection of quantitative trading strategies, arbitrage opportunities, and pred
 | 2 | Cross-Exchange Funding Arb | ✅ Complete | Production Ready | ATLAS |
 | 3 | SOL RSI Mean Reversion | ✅ Backtested | Optimization Needed | ATLAS |
 | 4 | OBI Microstructure | ✅ Backtested | Experimental | ATLAS |
+| 5 | Hoffman IRB | ✅ Complete | Production Ready | ATLAS |
+| 6 | VRP Harvester | ✅ Backtested | Validation Needed | ATLAS |
+| 7 | Options Dispersion | ✅ Architecture | Data Needed | ATLAS |
 
-**Total Strategies**: 4 implemented, 2 production-ready
+**Total Strategies**: 7 implemented, 3 production-ready
 
 ---
 
