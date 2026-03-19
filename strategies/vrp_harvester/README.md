@@ -41,7 +41,7 @@ This premium exists because:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Co-Messi/alpha-strategies.git
+git clone https://github.com/siewcapital/alpha-strategies.git
 cd alpha-strategies/strategies/vrp_harvester
 
 # Install dependencies
