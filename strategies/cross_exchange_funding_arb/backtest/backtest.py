@@ -171,11 +171,11 @@ class FundingBacktester:
             if price_data:
                 self._update_prices(price_data, timestamp)
             
-            # Run strategy update
-            result = self.strategy.update(timestamp)
-            
             # Execute signals
             self._execute_signals(timestamp)
+            
+            # Increment funding period counter
+            self.strategy.signal_generator.increment_funding_period()
             
             # Update equity
             self._update_equity(timestamp)
@@ -421,10 +421,24 @@ class FundingBacktester:
         if not closed_trades:
             return {
                 'total_return_pct': 0.0,
+                'total_return_usd': 0.0,
                 'sharpe_ratio': 0.0,
                 'max_drawdown_pct': 0.0,
                 'total_trades': 0,
-                'win_rate': 0.0
+                'winning_trades': 0,
+                'losing_trades': 0,
+                'win_rate': 0.0,
+                'profit_factor': 0.0,
+                'avg_trade_pnl': 0.0,
+                'avg_win': 0.0,
+                'avg_loss': 0.0,
+                'avg_hold_time_hours': 0,
+                'total_funding_earned': 0.0,
+                'total_trading_fees': 0.0,
+                'total_slippage': 0.0,
+                'net_funding_premium': 0.0,
+                'final_capital': self.capital,
+                'periods_processed': self.periods_processed
             }
         
         # Basic metrics
