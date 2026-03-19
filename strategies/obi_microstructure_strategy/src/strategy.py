@@ -160,14 +160,19 @@ class OrderBookImbalanceStrategy:
         """
         Calculate depth-weighted OBI across multiple levels.
         
-        Uses decaying weights: L1=0.5, L2=0.3, L3=0.2
+        Microstructure Logic:
+        While Level 1 OBI only looks at the best bid and ask, depth-weighted OBI incorporates
+        liquidity deeper in the book. By applying a decaying weight (e.g., L1=0.5, L2=0.3, L3=0.2),
+        we prioritize orders closer to the mid-price (which are more likely to be filled and represent 
+        immediate urgency) while still factoring in the broader support/resistance levels.
+        This helps filter out noise from single large orders at the top of the book.
         
         Args:
             book: Current order book snapshot
-            levels: Number of levels to consider
+            levels: Number of depth levels to include
             
         Returns:
-            Depth-weighted OBI in [-1, 1]
+            Depth-weighted OBI value in [-1, 1]
         """
         weights = [0.5, 0.3, 0.15, 0.05]
         obi_weighted = 0.0
@@ -191,14 +196,22 @@ class OrderBookImbalanceStrategy:
         """
         Calculate Order Flow Imbalance (OFI) between two book snapshots.
         
-        Based on changes in best bid/ask prices and volumes.
+        OFI measures the net buying or selling pressure by analyzing changes in the
+        best bid and ask prices and their corresponding volumes. Unlike OBI which is 
+        a static snapshot, OFI measures the *flow* of orders.
+        
+        Microstructure Logic:
+        - If the best bid price increases, the entire new bid volume represents new buying interest.
+        - If the best bid price decreases, the entire old bid volume represents canceled/filled buying interest.
+        - If the best bid price remains the same, the change in volume represents the net buying flow.
+        - Similar logic applies symmetrically to the ask side for selling pressure.
         
         Args:
             current: Current order book snapshot
             previous: Previous order book snapshot
             
         Returns:
-            OFI value representing net buying (+) or selling (-) pressure
+            OFI value representing net buying (positive) or selling (negative) pressure
         """
         cb = current.get_best_bid()
         ca = current.get_best_ask()

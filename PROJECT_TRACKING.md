@@ -232,3 +232,8 @@ alpha-strategies/
 ---
 
 *Tracked by ATLAS | Siew's Capital Research Division*
+
+5. ✅ **Additional Requirements (March 19)**
+   - Added `results/` directory with `sol-rsi-mean-reversion` backtest artifacts.
+   - Wrote `polymarket/README.md`.
+   - Added inline `Microstructure Logic` docs to `strategy.py` for OBI, OFI, and spoofing detection.

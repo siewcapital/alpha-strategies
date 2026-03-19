@@ -416,7 +416,7 @@ def main():
     print()
     
     # Save results
-    with open('/Users/siewbrayden/.openclaw/workspace/alpha-strategies/strategies/sol-rsi-mean-reversion/results.json', 'w') as f:
+    with open('../../results/sol-rsi-mean-reversion/results.json', 'w') as f:
         json.dump(results, f, indent=2, default=str)
     
     print("Results saved to results.json")
