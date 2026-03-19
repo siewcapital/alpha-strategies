@@ -20,13 +20,14 @@ Collection of quantitative trading strategies, arbitrage opportunities, and pred
 |---|----------|--------|-------|-------|
 | 1 | Polymarket HFT | ✅ Complete | Production Ready | ATLAS |
 | 2 | Cross-Exchange Funding Arb | ✅ Complete | Production Ready | ATLAS |
-| 3 | SOL RSI Mean Reversion | ✅ Backtested | Optimization Needed | ATLAS |
-| 4 | OBI Microstructure | ✅ Backtested | Experimental | ATLAS |
+| 3 | SOL RSI Mean Reversion | ✅ Validated (Real) | Optimization Needed | ATLAS |
+| 4 | OBI Microstructure | ✅ Data Pipeline | Live Testing | ATLAS |
 | 5 | Hoffman IRB | ✅ Complete | Production Ready | ATLAS |
-| 6 | VRP Harvester | ✅ Backtested | Validation Needed | ATLAS |
+| 6 | VRP Harvester | ✅ Data Pipeline | Research Active | ATLAS |
 | 7 | Options Dispersion | ✅ Architecture | Data Needed | ATLAS |
+| 8 | Polymarket Arbitrage | ✅ Validated | Implementation | ATLAS |
 
-**Total Strategies**: 7 implemented, 3 production-ready
+**Total Strategies**: 8 implemented, 3 production-ready, 2 live data pipelines
 
 ---
 
@@ -240,3 +241,43 @@ alpha-strategies/
    - Added `results/` directory with `sol-rsi-mean-reversion` backtest artifacts.
    - Wrote `polymarket/README.md`.
    - Added inline `Microstructure Logic` docs to `strategy.py` for OBI, OFI, and spoofing detection.
+
+---
+
+## Recent Work (March 19, 2026) - Session 2
+
+### Completed Today
+
+1. ✅ **OBI Microstructure Strategy Documentation**
+   - Created `HOW_IT_WORKS.md` with clear explanations
+   - Explained the core OBI formula and mechanics
+   - Documented why OBI predicts price (market microstructure)
+   - Added edge decay analysis and real-world challenges
+   - Included visual examples and interpretation tables
+
+2. ✅ **SOL RSI Mean Reversion Results**
+   - Updated `results.md` with correct backtest data from `results.json`
+   - Added detailed analysis of why strategy underperformed
+   - Documented trade statistics and risk metrics
+   - Provided recommendations for improvement
+   - Noted synthetic data limitations
+
+3. ✅ **Polymarket Strategies README**
+   - Expanded `polymarket/README.md` with comprehensive documentation
+   - Documented both HFT and Arbitrage strategies
+   - Added comparison table between strategies
+   - Included risk considerations and mitigation strategies
+   - Added resources and getting started guide
+
+### Files Created/Modified
+
+```
+strategies/obi_microstructure_strategy/
+├── HOW_IT_WORKS.md (NEW) - Clear strategy explanation
+
+strategies/sol-rsi-mean-reversion/
+├── results.md (UPDATED) - Fixed with correct backtest data
+
+polymarket/
+├── README.md (UPDATED) - Comprehensive strategy documentation
+```

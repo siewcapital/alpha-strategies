@@ -1,0 +1,13 @@
+{
+  "total_trades": 84,
+  "win_rate": 55.952380952380956,
+  "profit_factor": 0.8492695941448515,
+  "total_return_pct": -14.348027048089351,
+  "max_drawdown_pct": 20.387982483243732,
+  "sharpe_ratio": -0.578270859265844,
+  "avg_trade_return": -0.09819846815045433,
+  "avg_win": 1.8291252622433525,
+  "avg_loss": -2.5464205040561003,
+  "final_capital": 8565.197295191065,
+  "initial_capital": 10000.0
+}

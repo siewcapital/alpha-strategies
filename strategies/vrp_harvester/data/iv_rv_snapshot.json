@@ -1,0 +1,17 @@
+{
+    "timestamp": "2026-03-19T20:36:39.145602",
+    "data": {
+        "BTC": {
+            "index_price": 69702.33,
+            "implied_vol": 0.0,
+            "realized_vol": 45.0,
+            "vrp": -45.0
+        },
+        "ETH": {
+            "index_price": 2157.46,
+            "implied_vol": 0.0,
+            "realized_vol": 45.0,
+            "vrp": -45.0
+        }
+    }
+}

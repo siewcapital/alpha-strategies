@@ -378,14 +378,22 @@ def generate_synthetic_data(days: int = 365, volatility: float = 0.03) -> pd.Dat
 
 
 def main():
+    import os
     print("=" * 70)
     print("SOL RSI MEAN REVERSION STRATEGY BACKTEST")
     print("=" * 70)
     print()
     
-    # Generate synthetic data
-    print("Generating 1 year of synthetic SOL price data...")
-    df = generate_synthetic_data(days=365)
+    # Load real data if available, otherwise use synthetic
+    data_path = 'alpha-strategies/strategies/sol-rsi-mean-reversion/data/sol_usdt_1h_2024_2026.csv'
+    if os.path.exists(data_path):
+        print(f"Loading real SOL data from {data_path}...")
+        df = pd.read_csv(data_path)
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
+    else:
+        print("Real data not found. Generating 1 year of synthetic SOL price data...")
+        df = generate_synthetic_data(days=365)
+        
     print(f"Data range: {df['timestamp'].min()} to {df['timestamp'].max()}")
     print(f"Price range: ${df['close'].min():.2f} - ${df['close'].max():.2f}")
     print()
@@ -416,10 +424,12 @@ def main():
     print()
     
     # Save results
-    with open('../../results/sol-rsi-mean-reversion/results.json', 'w') as f:
+    output_dir = 'alpha-strategies/results/sol-rsi-mean-reversion'
+    os.makedirs(output_dir, exist_ok=True)
+    with open(f'{output_dir}/results_real_data.json', 'w') as f:
         json.dump(results, f, indent=2, default=str)
     
-    print("Results saved to results.json")
+    print(f"Results saved to {output_dir}/results_real_data.json")
     
     return results
 
