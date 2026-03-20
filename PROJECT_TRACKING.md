@@ -111,9 +111,8 @@ Collection of quantitative trading strategies, arbitrage opportunities, and pred
 
 ---
 
-<<<<<<< HEAD
 ## Phase 5 Results Summary
-=======
+
 ## Recent Work (March 20, 2026)
 
 ### Completed Today (FORGE Session)
@@ -144,7 +143,6 @@ Collection of quantitative trading strategies, arbitrage opportunities, and pred
 ---
 
 ## Recent Work (March 19, 2026)
->>>>>>> 10aea60 (feat(hoffman-irb): Add narrative-enhanced strategy with comparison backtest)
 
 ### 1. SOL RSI Re-evaluation with Real Data
 
