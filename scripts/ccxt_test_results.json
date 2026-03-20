@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-03-20T17:03:02.648873",
+  "exchange": "binance",
+  "testnet": true,
+  "results": {
+    "market_data": true,
+    "order_placement": false,
+    "account_balance": false,
+    "funding_rates": true
+  },
+  "summary": {
+    "passed": 2,
+    "total": 4,
+    "success_rate": 0.5
+  }
+}
