@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-03-20T06:59:52.704339",
+  "timestamp": "2026-03-20T08:53:41.804315",
   "tests": {
     "public_data": {
       "status": "passed",
       "tests": {
         "funding_rate": {
           "status": "passed",
-          "rate": -1.11e-05,
-          "mark_price": 70158.10930435
+          "rate": 1.228e-05,
+          "mark_price": 70145.2
         },
         "all_funding_rates": {
           "status": "passed",
@@ -21,7 +21,7 @@
         "ohlcv": {
           "status": "passed",
           "candles": 24,
-          "latest_close": 70153.4
+          "latest_close": 70137.9
         }
       }
     },
@@ -53,7 +53,7 @@
         },
         "arbitrage_detection": {
           "status": "passed",
-          "max_differential_bps": 0.6456
+          "max_differential_bps": 0.7833
         }
       }
     }
