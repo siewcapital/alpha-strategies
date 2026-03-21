@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-03-21T19:03:41.683985",
+  "automated_vaults": [
+    {
+      "name": "USDmny",
+      "apy": 0.03649960353403521,
+      "tvl": 21434437.992385074,
+      "share_price": 1.0621375749332906,
+      "timestamp": "2026-03-21T19:03:42.679274",
+      "simulated": true
+    },
+    {
+      "name": "USDpy",
+      "apy": 0.04122123125187581,
+      "tvl": 12143905.245629316,
+      "share_price": 1.001848461597984,
+      "timestamp": "2026-03-21T19:03:44.734269",
+      "simulated": true
+    },
+    {
+      "name": "ETH2x",
+      "apy": -0.00385267813227921,
+      "tvl": 19064443.500707936,
+      "share_price": 1.061658111780937,
+      "timestamp": "2026-03-21T19:03:42.673105",
+      "simulated": true
+    }
+  ],
+  "dex_opportunities": [
+    {
+      "platform": "Uniswap V3",
+      "pool": "ETH-USDC",
+      "fee_tier": 0.0005,
+      "estimated_apr": 0.15,
+      "tvl_range": "$50M-$100M",
+      "strategy": "Provide concentrated liquidity + short ETH perp",
+      "risk_level": "Medium",
+      "hedge_cost": 0.1095,
+      "net_yield": 0.040499999999999994
+    },
+    {
+      "platform": "Aerodrome",
+      "pool": "ETH-USDC",
+      "fee_tier": 0.0001,
+      "estimated_apr": 0.12,
+      "tvl_range": "$20M-$50M",
+      "strategy": "Velodrome-style LP + perp hedge",
+      "risk_level": "Medium",
+      "hedge_cost": 0.1095,
+      "net_yield": 0.010499999999999995
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "automated_vault",
+      "name": "USDpy",
+      "apy": 0.04122123125187581,
+      "rationale": "Low maintenance, battle-tested strategy"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Alpha Strategies - Project Tracking
 
 **Repository**: https://github.com/siewcapital/alpha-strategies
-**Last Updated**: March 20, 2026 (Phase 5 Complete - Real Data Validation & CCXT Testnet)
-**Status**: Phase 5 Complete - All tasks accomplished
+**Last Updated**: March 21, 2026 (Phase 6 Research Tools - Vault Monitor Added)
+**Status**: Phase 6 In Progress - Research Tools Development
 
 ---
 
@@ -26,8 +26,10 @@ Collection of quantitative trading strategies, arbitrage opportunities, and pred
 | 6 | VRP Harvester | ✅ Data Pipeline | Research Active | ATLAS |
 | 7 | Options Dispersion | ✅ Architecture | Data Needed | ATLAS |
 | 8 | Polymarket Arbitrage | ✅ Implementation Complete | Testing | ATLAS |
+| 9 | Basis Trade | ✅ Data Pipeline | Paper Trading | ATLAS |
+| 10 | Delta-Neutral DeFi | ✅ Vault Monitor | Research Phase | ATLAS |
 
-**Total Strategies**: 8 implemented, 4 production-ready, 2 live data pipelines, 1 in testing
+**Total Strategies**: 10 implemented, 4 production-ready, 3 live data pipelines, 2 in testing
 
 ---
 
@@ -113,7 +115,33 @@ Collection of quantitative trading strategies, arbitrage opportunities, and pred
 
 ## Phase 5 Results Summary
 
-## Recent Work (March 20, 2026)
+### Phase 6: Research Tools Development 🔄 IN PROGRESS (March 21, 2026)
+
+#### March 21, 2026 (Evening Session)
+
+1. ✅ **Volatility Arbitrage Monitor**
+   - File: `research/volatility_arbitrage_monitor.py`
+   - Tracks ETH-BTC implied volatility spreads
+   - Deribit integration for live options data
+   - Regime detection with signal generation
+   - Delta-hedged strategy recommendations
+
+2. ✅ **Liquidation Cascade Sniping Monitor**
+   - File: `research/liquidation_cascade_monitor.py`
+   - Detects abnormal liquidation spikes (>3x average)
+   - Mean-reversion signal generation
+   - 2% target / 5% stop loss structure
+
+3. ✅ **Strategy 10: Delta-Neutral DeFi Vault Monitor**
+   - File: `strategies/delta-neutral-defi/src/vault_monitor.py`
+   - Monitors Toros Finance automated vaults (USDmny, USDpy)
+   - Tracks DEX LP opportunities (Uniswap V3, Aerodrome)
+   - Calculates net yield after CEX hedge costs
+   - Simulated data working, live API integration ready
+
+---
+
+## Recent Work (March 21, 2026)
 
 ### Completed Today (FORGE Session)
 
