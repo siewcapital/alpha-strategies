@@ -432,7 +432,7 @@ async def main():
     parser.add_argument('--exchanges', nargs='+', default=['deribit'],
                        help='Exchanges to monitor (default: deribit)')
     parser.add_argument('--threshold', type=float, default=5.0,
-                       help='Minimum spread threshold % (default: 5)')
+                       help='Minimum spread threshold %% (default: 5)')
     parser.add_argument('--interval', type=int, default=300,
                        help='Update interval in seconds (default: 300)')
     parser.add_argument('--cycles', type=int, default=None,
