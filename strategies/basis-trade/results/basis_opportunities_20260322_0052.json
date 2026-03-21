@@ -1,0 +1,74 @@
+[
+  {
+    "exchange": "okx",
+    "symbol": "BTC",
+    "spot_price": 70403.4,
+    "futures_price": 70374.0,
+    "basis": -45.72648480044093,
+    "timestamp": "2026-03-22T00:52:00.495357"
+  },
+  {
+    "exchange": "binance",
+    "symbol": "BTC",
+    "spot_price": 70407.41,
+    "futures_price": 70371.5,
+    "basis": -55.848454019262775,
+    "timestamp": "2026-03-22T00:51:46.884154"
+  },
+  {
+    "exchange": "bybit",
+    "symbol": "ETH",
+    "spot_price": 2149.52,
+    "futures_price": 2148.41,
+    "basis": -56.54518218021417,
+    "timestamp": "2026-03-22T00:51:56.114155"
+  },
+  {
+    "exchange": "binance",
+    "symbol": "ETH",
+    "spot_price": 2149.45,
+    "futures_price": 2148.32,
+    "basis": -57.56588894831802,
+    "timestamp": "2026-03-22T00:51:47.711934"
+  },
+  {
+    "exchange": "okx",
+    "symbol": "ETH",
+    "spot_price": 2149.42,
+    "futures_price": 2148.26,
+    "basis": -59.095011677561416,
+    "timestamp": "2026-03-22T00:52:00.953730"
+  },
+  {
+    "exchange": "bybit",
+    "symbol": "BTC",
+    "spot_price": 70402.2,
+    "futures_price": 70360.7,
+    "basis": -64.5469885884248,
+    "timestamp": "2026-03-22T00:51:55.531383"
+  },
+  {
+    "exchange": "bybit",
+    "symbol": "SOL",
+    "spot_price": 89.77,
+    "futures_price": 89.71,
+    "basis": -73.18703353013534,
+    "timestamp": "2026-03-22T00:51:56.464464"
+  },
+  {
+    "exchange": "okx",
+    "symbol": "SOL",
+    "spot_price": 89.77,
+    "futures_price": 89.71,
+    "basis": -73.18703353013534,
+    "timestamp": "2026-03-22T00:52:01.355828"
+  },
+  {
+    "exchange": "binance",
+    "symbol": "SOL",
+    "spot_price": 89.78,
+    "futures_price": 89.71,
+    "basis": -85.37536199599923,
+    "timestamp": "2026-03-22T00:51:48.467815"
+  }
+]
