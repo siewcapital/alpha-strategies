@@ -453,7 +453,7 @@ async def main():
     parser.add_argument('--threshold', type=float, default=3.0,
                        help='Liquidation spike threshold multiplier (default: 3)')
     parser.add_argument('--price-threshold', type=float, default=2.0,
-                       help='Price move threshold % (default: 2)')
+                       help='Price move threshold %% (default: 2)')
     parser.add_argument('--cooldown', type=int, default=30,
                        help='Cooldown between signals (minutes, default: 30)')
     parser.add_argument('--interval', type=int, default=60,
