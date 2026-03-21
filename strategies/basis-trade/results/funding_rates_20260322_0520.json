@@ -1,0 +1,74 @@
+[
+  {
+    "exchange": "Binance",
+    "symbol": "BTC",
+    "funding_rate": 0.0000392,
+    "annualized_yield": 4.2924,
+    "mark_price": 70345.6,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  },
+  {
+    "exchange": "Bybit",
+    "symbol": "BTC",
+    "funding_rate": -0.00008291,
+    "annualized_yield": -9.078645,
+    "mark_price": 70334.2,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  },
+  {
+    "exchange": "OKX",
+    "symbol": "BTC",
+    "funding_rate": 0.000009955,
+    "annualized_yield": 1.0901,
+    "mark_price": 70337.2,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  },
+  {
+    "exchange": "Binance",
+    "symbol": "ETH",
+    "funding_rate": -0.00000531,
+    "annualized_yield": -0.5814,
+    "mark_price": 2153.52,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  },
+  {
+    "exchange": "Bybit",
+    "symbol": "ETH",
+    "funding_rate": 0.00001489,
+    "annualized_yield": 1.6305,
+    "mark_price": 2153.41,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  },
+  {
+    "exchange": "OKX",
+    "symbol": "ETH",
+    "funding_rate": -0.000021853,
+    "annualized_yield": -2.3929,
+    "mark_price": 2153.25,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  },
+  {
+    "exchange": "Binance",
+    "symbol": "SOL",
+    "funding_rate": -0.00010305,
+    "annualized_yield": -11.2840,
+    "mark_price": 90.03,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  },
+  {
+    "exchange": "Bybit",
+    "symbol": "SOL",
+    "funding_rate": -0.00015831,
+    "annualized_yield": -17.3349,
+    "mark_price": 90.02,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  },
+  {
+    "exchange": "OKX",
+    "symbol": "SOL",
+    "funding_rate": -0.000101873,
+    "annualized_yield": -11.1551,
+    "mark_price": 90.02,
+    "timestamp": "2026-03-22T05:20:59.975404"
+  }
+]
