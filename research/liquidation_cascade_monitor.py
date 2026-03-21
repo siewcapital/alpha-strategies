@@ -358,7 +358,7 @@ class LiquidationCascadeMonitor:
                 print(f"LIQUIDATION CASCADE DETECTED: {symbol}")
                 print(f"{'🚨'*20}\n")
                 print(f"Direction:        {cascade['direction']}")
-                print(f"Liquidation Vol:  ${cascade['liquidation_usd:,.0f}")
+                print(f"Liquidation Vol:  ${cascade['liquidation_usd']:,.0f}")
                 print(f"Spike Ratio:      {cascade['liquidation_spike_ratio']:.1f}x average")
                 print(f"5m Price Change:  {cascade['price_change_5m']:+.2f}%")
                 print(f"Confidence:       {cascade['confidence']*100:.0f}%")
