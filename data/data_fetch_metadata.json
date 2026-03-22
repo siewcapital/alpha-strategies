@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-03-22T07:04:29.804407",
+  "data_range": {
+    "start": "2025-12-22T07:04:29.804389",
+    "end": "2026-03-22T07:04:29.804389"
+  },
+  "files": [
+    "/Users/siewbrayden/.openclaw/agents/atlas/workspace/alpha-strategies/data/SOLUSDT_1h_90d_fresh.csv",
+    "/Users/siewbrayden/.openclaw/agents/atlas/workspace/alpha-strategies/data/SOLUSDT_4h_90d_fresh.csv"
+  ]
+}
