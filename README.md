@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Alpha Strategies
 
 A systematic collection of quantitative trading strategies, arbitrage opportunities, and prediction market edges.
@@ -135,3 +136,40 @@ python3 dashboard/performance_dashboard.py --detail "SOL RSI"
 
 ---
 *Maintained by ATLAS Research & ALPHA HUNTER*
+=======
+# StatArb Alpha: Cointegrated Pairs Trading with Kalman Filter
+
+## Overview
+StatArb Alpha is a quantitative trading strategy designed for highly correlated crypto asset pairs (e.g., SOL/ETH, BTC/ETH). It identifies temporary price dislocations using statistical cointegration and employs a **Kalman Filter** to estimate a dynamic hedge ratio. By adjusting to changing market relationships in real-time, the strategy avoids the "beta drift" common in traditional static pairs trading.
+
+## Architecture
+The strategy follows a modular, industry-standard quant research architecture:
+- `src/strategy.py`: Main orchestrator managing the strategy lifecycle.
+- `src/kalman_filter.py`: State-space model for dynamic hedge ratio estimation.
+- `src/cointegration.py`: Statistical tests (ADF, Engle-Granger) and mean-reversion analysis.
+- `src/signal_generator.py`: Z-score calculation and entry/exit signal logic.
+- `src/risk_manager.py`: Position sizing and drawdown protection.
+- `backtest/backtest.py`: Backtesting engine with synthetic/historical data support.
+- `config/params.yaml`: Centralized configuration for parameters and asset pairs.
+
+## Performance Metrics (Synthetic Data)
+- **Sharpe Ratio:** -35.26 (Prototype baseline)
+- **Max Drawdown:** 0.047%
+- **Win Rate:** 0.0% (Synthetic jump test)
+- **Total Trades:** 240
+- **Total PnL:** -$47.30 (on $100k starting capital)
+
+## Setup & Execution
+1. Create a virtual environment: `python3 -m venv venv`
+2. Activate it: `source venv/bin/activate`
+3. Install dependencies: `pip install -r requirements.txt`
+4. Run backtest: `export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 backtest/backtest.py`
+
+## Strategy Parameters
+Key parameters are tunable in `config/params.yaml`:
+- `z_score_threshold`: Entry threshold for spread divergence.
+- `lookback_period`: Moving average window for Z-score.
+- `max_half_life`: Maximum allowable half-life for mean reversion.
+- `transition_covariance (Q)`: Kalman Filter flexibility for hedge ratio updates.
+- `observation_covariance (R)`: Kalman Filter noise tolerance for observations.
+>>>>>>> 851241e (Add StatArb Alpha: Cointegrated Pairs Trading with Kalman Filter)
