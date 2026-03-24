@@ -1,0 +1,50 @@
+[
+  {
+    "entry_time": "2026-01-11 08:00:00",
+    "exit_time": "2026-01-11 16:00:00",
+    "direction": "long",
+    "entry_price": 136.49,
+    "exit_price": 139.39,
+    "size_usd": 8297.26443768998,
+    "pnl": 164.67562310030277,
+    "pnl_pct": 2.1246977800571303,
+    "exit_reason": "rsi_target",
+    "duration_hours": 0.0
+  },
+  {
+    "entry_time": "2026-01-28 00:00:00",
+    "exit_time": "2026-01-29 00:00:00",
+    "direction": "short",
+    "entry_price": 126.9,
+    "exit_price": 122.99,
+    "size_usd": 6188.272969489198,
+    "pnl": 182.0073974384821,
+    "pnl_pct": 3.0811662726556426,
+    "exit_reason": "rsi_target",
+    "duration_hours": 0.0
+  },
+  {
+    "entry_time": "2026-02-08 04:00:00",
+    "exit_time": "2026-02-09 04:00:00",
+    "direction": "short",
+    "entry_price": 87.32,
+    "exit_price": 85.43,
+    "size_usd": 2373.2179720359527,
+    "pnl": 48.044672658067654,
+    "pnl_pct": 2.164452588181386,
+    "exit_reason": "rsi_target",
+    "duration_hours": 0.0
+  },
+  {
+    "entry_time": "2026-02-21 00:00:00",
+    "exit_time": "2026-02-22 16:00:00",
+    "direction": "short",
+    "entry_price": 84.29,
+    "exit_price": 83.25,
+    "size_usd": 5719.29780223867,
+    "pnl": 62.559713582599066,
+    "pnl_pct": 1.2338355676830064,
+    "exit_reason": "rsi_target",
+    "duration_hours": 0.0
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "exchange": "binance",
+    "symbol": "BTC",
+    "funding_rate": -2.672e-05,
+    "annualized_yield": -2.92584,
+    "mark_price": 70704.19793478,
+    "index_price": 70738.56434783,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:48.476415"
+  },
+  {
+    "exchange": "binance",
+    "symbol": "ETH",
+    "funding_rate": 2.907e-05,
+    "annualized_yield": 3.1831650000000002,
+    "mark_price": 2157.60682171,
+    "index_price": 2158.52255814,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:48.934704"
+  },
+  {
+    "exchange": "binance",
+    "symbol": "SOL",
+    "funding_rate": 2.918e-05,
+    "annualized_yield": 3.19521,
+    "mark_price": 90.23,
+    "index_price": 90.28276003,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:49.365280"
+  },
+  {
+    "exchange": "bybit",
+    "symbol": "BTC",
+    "funding_rate": 8.414e-05,
+    "annualized_yield": 9.213330000000001,
+    "mark_price": 70701.01,
+    "index_price": 70730.69,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:49.433782"
+  },
+  {
+    "exchange": "bybit",
+    "symbol": "ETH",
+    "funding_rate": 0.0001,
+    "annualized_yield": 10.950000000000001,
+    "mark_price": 2157.08,
+    "index_price": 2157.94,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:49.727083"
+  },
+  {
+    "exchange": "bybit",
+    "symbol": "SOL",
+    "funding_rate": 0.0001,
+    "annualized_yield": 10.950000000000001,
+    "mark_price": 90.238,
+    "index_price": 90.281,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:49.784973"
+  },
+  {
+    "exchange": "okx",
+    "symbol": "BTC",
+    "funding_rate": 2.60009478109e-05,
+    "annualized_yield": 2.84710378529355,
+    "mark_price": null,
+    "index_price": null,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:49.882877"
+  },
+  {
+    "exchange": "okx",
+    "symbol": "ETH",
+    "funding_rate": 9.0199738979e-06,
+    "annualized_yield": 0.9876871418200499,
+    "mark_price": null,
+    "index_price": null,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:50.252445"
+  },
+  {
+    "exchange": "okx",
+    "symbol": "SOL",
+    "funding_rate": -1.2573612708e-06,
+    "annualized_yield": -0.1376810591526,
+    "mark_price": null,
+    "index_price": null,
+    "next_funding": 1774080000000,
+    "timestamp": "2026-03-21T09:11:50.562267"
+  }
+]

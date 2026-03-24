@@ -1,0 +1,24 @@
+{
+    "total_events_scanned": 3,
+    "arbs_found": 1,
+    "details": [
+        {
+            "type": "Cross-Platform",
+            "event": "CPI_March_2026",
+            "legs": [
+                {
+                    "platform": "Polymarket",
+                    "side": "YES",
+                    "price": 0.516
+                },
+                {
+                    "platform": "Kalshi",
+                    "side": "NO",
+                    "price": 0.461
+                }
+            ],
+            "cost": 0.977,
+            "profit": 0.023
+        }
+    ]
+}

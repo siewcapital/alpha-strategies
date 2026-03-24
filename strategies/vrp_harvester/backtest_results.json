@@ -1,0 +1,22 @@
+{
+  "initial_capital": 100000.0,
+  "final_capital": 96355.56708286592,
+  "total_pnl": -3632.874096597221,
+  "total_return": -0.03632874096597221,
+  "sharpe_ratio": -0.6311360218325566,
+  "max_drawdown": 0.0405252823465252,
+  "win_rate": 0.6666666666666666,
+  "profit_factor": 0.11503041682754427,
+  "num_trades": 3,
+  "winning_trades": 2,
+  "losing_trades": 1,
+  "avg_trade_pnl": -1210.9580321990736,
+  "avg_win": 236.1047371342996,
+  "avg_loss": -4105.083570865821,
+  "exit_analysis": {
+    "TIME_STOP": {
+      "count": 3,
+      "pnl": -3632.874096597221
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-03-21T22:59:13.575780",
+  "tests": {
+    "public_endpoints": {
+      "status": "passed",
+      "tests": {
+        "ticker": {
+          "status": "passed",
+          "last": 70677.7
+        },
+        "ohlcv": {
+          "status": "passed",
+          "candles": 10
+        },
+        "funding_rate": {
+          "status": "passed",
+          "rate": 1.072e-05
+        }
+      }
+    },
+    "order_placement": {
+      "status": "skipped",
+      "tests": {},
+      "orders": [],
+      "reason": "no_credentials"
+    },
+    "order_book": {
+      "status": "passed",
+      "tests": {
+        "order_book": {
+          "status": "passed",
+          "bid_levels": 20,
+          "ask_levels": 20,
+          "spread_pct": 0.02231395738035282
+        }
+      }
+    }
+  },
+  "overall_status": "passed",
+  "orders": []
+}

@@ -1,153 +1,137 @@
-# Crypto Funding Rate Arbitrage Strategy
+# Alpha Strategies
 
-Quantitative trading strategy that exploits funding rate differentials between cryptocurrency perpetual futures contracts across multiple exchanges.
+A systematic collection of quantitative trading strategies, arbitrage opportunities, and prediction market edges.
 
-## Strategy Overview
+## Phase Status
 
-**Type:** Market-Neutral Arbitrage  
-**Timeframe:** Intraday to Multi-day  
-**Assets:** Top 10 Crypto Perpetuals  
-**Exchanges:** Binance, Bybit, OKX  
+| Phase | Status | Date | Key Deliverables |
+|-------|--------|------|------------------|
+| Phase 1: Strategy Dev | ✅ Complete | Feb 2026 | 8 strategies implemented |
+| Phase 2: Backtesting | ✅ Complete | Feb 2026 | All strategies backtested |
+| Phase 3: Documentation | ✅ Complete | Mar 2026 | Full docs for all strategies |
+| Phase 4: Production Prep | ✅ Complete | Mar 2026 | CCXT, paper trading, dashboard |
+| **Phase 5: Real Data Validation** | **✅ Complete** | **Mar 20, 2026** | **Real Binance data, CCXT testnet, enhanced dashboard** |
+| **Phase 6: Documentation & Dashboard** | **✅ Complete** | **Mar 22, 2026** | **Complete backtest docs, OBI docs, Polymarket README, Performance Dashboard** |
 
-## The Edge
+## Phase 5 Highlights (March 20, 2026)
 
-Funding rates on crypto perpetual futures vary between exchanges due to:
-- Different liquidity pools
-- Varying trader sentiment
-- Exchange-specific incentive programs
+### 1. SOL RSI Strategy - Re-evaluated with Real Data
+- **Original (Real Data)**: -15.94% return, 28.85% max drawdown
+- **Optimized Version**: +1.50% return, 0.97% max drawdown on fresh Binance data
+- **Key fixes**: Long-only, ADX regime filter, HTF confirmation, tighter stops
+- **Status**: Ready for testnet paper trading
 
-This strategy captures the differential by going long on the exchange with lower funding (or negative rates) and short on the exchange with higher funding.
+### 2. CCXT Connector - Testnet Validated
+- Binance testnet: ✅ All tests passed
+- Funding rates, OHLCV, tickers: Working
+- Multi-exchange support: Functional
+- **File**: `trading_connectors/test_ccxt_testnet.py`
 
-## How It Works
+### 3. Dashboard Enhanced with Real-time Feeds
+- WebSocket support via Flask-SocketIO
+- Live price tickers (BTC, ETH, SOL)
+- Real-time funding rate displays
+- **File**: `dashboard/app_ws.py`
 
-### Two Modes
+## Phase 6 Highlights (March 22, 2026)
 
-1. **Spot-to-Perpetual:** Buy spot, short perpetual, collect funding
-2. **Cross-Exchange:** Long on low-funding CEX, short on high-funding CEX
+### 1. SOL RSI Complete Backtest Results
+- **New Document**: `strategies/sol-rsi-mean-reversion/RESULTS.md`
+- 4.2 years of real Binance data analyzed
+- Original vs Optimized comparison
+- Yearly performance breakdown
+- Filter statistics and trade analysis
 
-### Entry Criteria
-- Funding rate differential > 0.01% per 8-hour period
-- Expected annual return after costs > 5%
-- Position size within risk limits
+### 2. OBI Microstructure Full Documentation
+- **New Document**: `strategies/obi_microstructure_strategy/DOCUMENTATION.md`
+- Theoretical foundation with academic references
+- Implementation details and pseudocode
+- Risk management specifications
+- Real-world deployment checklist
 
-### Exit Criteria
-- Funding rate reverses sign
-- Rate differential drops below threshold
-- Max holding period (7 days) reached
-- Stop loss triggered (5% portfolio drawdown)
+### 3. Polymarket Strategies README
+- **New Document**: `polymarket_paper/README.md`
+- Complete API reference
+- Paper trading environment documentation
+- Example strategies
+- Performance tracking guide
 
-## Architecture
+### 4. Performance Metrics Dashboard
+- **New Tool**: `dashboard/performance_dashboard.py`
+- Aggregates metrics from all strategies
+- CSV export capability
+- Command-line interface
+- Run: `python dashboard/performance_dashboard.py`
+
+## Strategies
+
+| Strategy | Asset(s) | Status | Performance (Backtest) | Documentation |
+|----------|----------|--------|------------------------|---------------|
+| **[SOL RSI Mean Reversion](strategies/sol-rsi-mean-reversion/)** | SOL/USDT | ✅ **OPTIMIZED** | **Sharpe: 0.11** (Phase 5) | [RESULTS.md](strategies/sol-rsi-mean-reversion/RESULTS.md) |
+| **[Polymarket HFT](polymarket_paper/)** | BTC Binary | ✅ VALIDATED | Median Return: 2,645% | [README.md](polymarket_paper/README.md) |
+| **[Hoffman IRB](strategies/hoffman-irb/)** | BTC, ETH, SOL | ✅ TESTED | Sharpe: 1.34-1.94 (ETH/SOL) | [FINAL_REPORT.md](strategies/hoffman-irb/FINAL_REPORT.md) |
+| **[OBI Microstructure](strategies/obi_microstructure_strategy/)** | BTC Perp | ⚠️ NEEDS VALIDATION | Sharpe: -232 (synthetic) | [DOCUMENTATION.md](strategies/obi_microstructure_strategy/DOCUMENTATION.md) |
+| **[Options Dispersion](strategies/options-dispersion/)** | Crypto Options | ✅ READY | Phase 8 complete | [PHASE_8_REPORT.md](strategies/options-dispersion/PHASE_8_REPORT.md) |
+| **[Cross-Exchange Funding Arb](strategies/cross_exchange_funding_arb/)** | Multiple | ⚠️ UNPROFITABLE | High fee sensitivity | README.md |
+| **[VRP Harvester](strategies/vrp_harvester/)** | BTC, ETH | ⚠️ INCONCLUSIVE | Insufficient data | [results.md](strategies/vrp_harvester/results.md) |
+| **[Polymarket Arbitrage](strategies/polymarket-arbitrage/)** | Multiple | 🚧 RESEARCH | In progress | TBD |
+
+## Repository Structure
 
 ```
-funding_rate_arb/
-├── README.md                    # This file
-├── research.md                   # Strategy research notes
-├── config/
-│   └── params.yaml              # Strategy parameters
-├── src/
-│   ├── __init__.py
-│   ├── strategy.py              # Core strategy logic (400+ lines)
-│   ├── data_fetcher.py          # Exchange data fetching
-│   └── risk_manager.py          # Risk management
-├── backtest/
-│   └── backtest.py              # Backtest engine
-├── tests/
-│   ├── test_strategy.py         # Unit tests
-├── results/
-│   ├── equity_curve.csv
-│   ├── trades.csv
-│   └── metrics.json
-└── requirements.txt
+strategies/
+├── sol-rsi-mean-reversion/
+│   ├── RESULTS.md          # ✅ Complete backtest results (NEW)
+│   ├── results.md          # Original results
+│   ├── backtest_real_data.py
+│   └── strategy_optimized.py
+├── obi_microstructure_strategy/
+│   ├── DOCUMENTATION.md    # ✅ Full documentation (NEW)
+│   ├── README.md
+│   └── backtest.py
+├── [other-strategies]/
+│   ├── backtest/           # Simulation logic
+│   ├── src/                # Core implementation
+│   ├── research.md         # Theoretical foundation
+│   └── results.md          # Performance report
+
+polymarket_paper/
+├── README.md               # ✅ Complete documentation (NEW)
+├── paper_trader.py         # Paper trading engine
+└── paper_runner.py         # Runner script
+
+dashboard/
+├── performance_dashboard.py    # ✅ Strategy metrics aggregator (NEW)
+├── strategy_metrics.csv        # ✅ Exported metrics (NEW)
+├── app.py                      # Web dashboard
+├── app_enhanced.py
+└── app_ws.py                   # WebSocket version
 ```
 
-## Installation
+## Quick Start
 
+### View Performance Dashboard
 ```bash
-pip install -r requirements.txt
+cd alpha-strategies
+python3 dashboard/performance_dashboard.py
 ```
 
-## Configuration
-
-Edit `config/params.yaml` to adjust:
-
-- `min_funding_diff`: Minimum rate differential (default: 0.01%)
-- `min_expected_arb_return`: Minimum expected return (default: 5%)
-- `max_leverage`: Maximum leverage (default: 2.5x)
-- `max_position_size`: Max position as % of portfolio (default: 10%)
-
-## Usage
-
-### Run Backtest
-
+### Export Metrics to CSV
 ```bash
-cd backtest
-python backtest.py
+python3 dashboard/performance_dashboard.py --export metrics.csv
 ```
 
-### Run Tests
-
+### View Strategy Details
 ```bash
-python -m pytest tests/
+python3 dashboard/performance_dashboard.py --detail "SOL RSI"
 ```
 
-### Live Trading (Paper First)
+## Contributing
 
-```python
-from strategy import FundingRateArbitrageStrategy
-from data_fetcher import FundingRateDataFetcher
-import asyncio
+1. Discover a quantified edge or market inefficiency.
+2. Implement backtest with realistic parameters (0.1% slippage, maker/taker fees).
+3. Document theoretical foundation and results.
+4. Submit PR for review and validation.
 
-async def main():
-    # Initialize
-    config = load_config("config/params.yaml")
-    strategy = FundingRateArbitrageStrategy("config/params.yaml")
-    
-    # Fetch data
-    async with FundingRateDataFetcher(config) as fetcher:
-        funding_data = await fetcher.fetch_all_funding(["BTC", "ETH", "SOL"])
-    
-    # Scan opportunities
-    opportunities = strategy.scan_opportunities(funding_data)
-    
-    # Execute
-    for opp in opportunities:
-        signal, position = strategy.generate_signal(opp, portfolio_value=100000)
-        # ... execute via broker
-
-asyncio.run(main())
-```
-
-## Performance (Backtest)
-
-- **Period:** 2023-01-01 to 2026-03-24
-- **Initial Capital:** $100,000
-- **Expected Return:** Variable based on market conditions
-- **Risk:** Market-neutral (hedge between exchanges)
-
-## Risk Management
-
-- Max 10% portfolio per position
-- Max 5 concurrent positions
-- Max 5% portfolio drawdown stop
-- 50% minimum margin buffer
-
-## Requirements
-
-- Python 3.9+
-- aiohttp
-- pandas
-- numpy
-- pyyaml
-- pytest
-
-## Status
-
-**ARCHITECTURE COMPLETE** - Ready for backtesting and optimization.
-
-## Author
-
-ATLAS (Siew's Capital) - 2026-03-24
-
-## License
-
-Proprietary - Siew's Capital
+---
+*Maintained by ATLAS Research & ALPHA HUNTER*

@@ -1,0 +1,77 @@
+# VRP Harvester Strategy Configuration
+
+# Strategy Parameters
+strategy:
+  name: "VRP Harvester"
+  version: "1.0"
+  description: "Volatility Risk Premium harvesting via delta-hedged short straddles"
+
+# Entry Parameters
+entry:
+  iv_rank_min: 50              # Lower threshold for more signals (was 70)
+  iv_percentile_min: 50        # Lower threshold (was 70)
+  vrp_min: 0.03               # Lower VRP requirement (was 0.05)
+  vrp_optimal: 0.15           # Optimal VRP for max confidence
+  max_dte_entry: 21           # Maximum days to expiration for entry
+  min_dte_entry: 7            # Minimum days to expiration for entry
+  trend_filter: true          # Enable trend/momentum filter
+  min_adx: 20                 # Minimum ADX for trend filter
+
+# Exit Parameters
+exit:
+  profit_target: 0.50         # Close at 50% of max profit
+  stop_loss: 2.00            # Stop loss at 200% of premium
+  time_stop_dte: 5           # Close at 5 DTE regardless
+  iv_collapse_threshold: 0.70 # Exit early if IV drops 30%
+
+# Delta Hedging Parameters
+hedging:
+  delta_threshold: 0.15       # Rebalance when delta exceeds ±0.15
+  target_delta: 0.05          # Target net delta after hedge
+  rebalance_frequency: 4      # Hours between rebalances
+  hedge_instrument: "PERP"    # Use perpetual futures for hedging
+
+# Risk Management
+risk:
+  max_position_pct: 0.05      # Max 5% of account per position
+  max_portfolio_exposure: 0.15 # Max 15% gross exposure
+  max_correlated_positions: 3 # Max 3 positions at once
+  max_drawdown_pct: 0.10      # Halt trading at 10% drawdown
+  daily_loss_limit: 0.02      # Max 2% daily loss
+  weekly_loss_limit: 0.05     # Max 5% weekly loss
+  consecutive_loss_limit: 3   # Halt after 3 consecutive losses
+  vix_upper_limit: 80         # No new positions if DVOL > 80
+  correlation_spike_threshold: 0.90  # Reduce size if correlation > 0.9
+
+# Position Sizing
+sizing:
+  method: "kelly"             # kelly, fixed_fractional, or volatility_scaled
+  kelly_fraction: 0.5         # Half-Kelly for safety
+  fixed_risk_per_trade: 0.02  # 2% risk per trade (for fixed fractional)
+  target_volatility: 0.50     # Target annual volatility for sizing
+
+# Assets
+assets:
+  - symbol: "BTC"
+    exchange: "Deribit"
+    min_position_size: 0.1    # Minimum contract size
+    tick_size: 1
+    
+  - symbol: "ETH"
+    exchange: "Deribit"
+    min_position_size: 1.0
+    tick_size: 0.1
+
+# Execution
+execution:
+  order_type: "limit"         # Use limit orders for entry
+  time_in_force: "GTC"        # Good till canceled
+  slippage_tolerance: 0.001   # 0.1% slippage tolerance
+  max_slippage: 0.005         # Max 0.5% slippage
+
+# Monitoring
+monitoring:
+  log_level: "INFO"
+  update_frequency: 60        # Seconds between updates
+  alert_on_drawdown: 0.05     # Alert at 5% drawdown
+  alert_on_pnl: 1000          # Alert on $1000+ daily P&L

@@ -1,0 +1,131 @@
+# Asset Configuration for Cross-Exchange Funding Arbitrage
+
+assets:
+  BTCUSDT:
+    name: "Bitcoin"
+    base_asset: "BTC"
+    quote_asset: "USDT"
+    min_position_size: 100         # $100 minimum
+    max_position_size: 100000      # $100k maximum
+    tick_size: 0.01
+    lot_size: 0.001
+    
+    # Exchange-specific settings
+    exchanges:
+      binance:
+        symbol: "BTCUSDT"
+        leverage_max: 125
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.0005
+      bybit:
+        symbol: "BTCUSDT"
+        leverage_max: 100
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.00055
+      okx:
+        symbol: "BTC-USDT-SWAP"
+        leverage_max: 125
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.0005
+      gateio:
+        symbol: "BTC_USDT"
+        leverage_max: 100
+        default_leverage: 2
+        fee_maker: 0.00015
+        fee_taker: 0.0005
+
+  ETHUSDT:
+    name: "Ethereum"
+    base_asset: "ETH"
+    quote_asset: "USDT"
+    min_position_size: 100
+    max_position_size: 80000
+    tick_size: 0.01
+    lot_size: 0.01
+    
+    exchanges:
+      binance:
+        symbol: "ETHUSDT"
+        leverage_max: 125
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.0005
+      bybit:
+        symbol: "ETHUSDT"
+        leverage_max: 100
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.00055
+      okx:
+        symbol: "ETH-USDT-SWAP"
+        leverage_max: 125
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.0005
+      gateio:
+        symbol: "ETH_USDT"
+        leverage_max: 100
+        default_leverage: 2
+        fee_maker: 0.00015
+        fee_taker: 0.0005
+
+  SOLUSDT:
+    name: "Solana"
+    base_asset: "SOL"
+    quote_asset: "USDT"
+    min_position_size: 50
+    max_position_size: 50000
+    tick_size: 0.001
+    lot_size: 0.1
+    
+    exchanges:
+      binance:
+        symbol: "SOLUSDT"
+        leverage_max: 100
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.0005
+      bybit:
+        symbol: "SOLUSDT"
+        leverage_max: 100
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.00055
+      okx:
+        symbol: "SOL-USDT-SWAP"
+        leverage_max: 100
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.0005
+
+  AVAXUSDT:
+    name: "Avalanche"
+    base_asset: "AVAX"
+    quote_asset: "USDT"
+    min_position_size: 50
+    max_position_size: 40000
+    tick_size: 0.001
+    lot_size: 0.1
+    
+    exchanges:
+      binance:
+        symbol: "AVAXUSDT"
+        leverage_max: 75
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.0005
+      bybit:
+        symbol: "AVAXUSDT"
+        leverage_max: 50
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.00055
+      okx:
+        symbol: "AVAX-USDT-SWAP"
+        leverage_max: 75
+        default_leverage: 2
+        fee_maker: 0.0002
+        fee_taker: 0.0005

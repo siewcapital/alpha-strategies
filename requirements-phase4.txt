@@ -1,0 +1,22 @@
+# Alpha Strategies Phase 4 Requirements
+
+# Dashboard
+flask>=2.3.0
+
+# Exchange Connectivity
+ccxt>=4.0.0
+
+# Data Fetching
+aiohttp>=3.8.0
+requests>=2.31.0
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Async Support
+asyncio>=3.4.3
+
+# Utilities
+pyyaml>=6.0
+python-dotenv>=1.0.0
