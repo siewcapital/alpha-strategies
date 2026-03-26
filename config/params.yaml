@@ -1,0 +1,123 @@
+# Polymarket 5-Minute BTC Signal Arbitrage Configuration
+# Tunable parameters for signal engine, risk management, and execution
+
+# =============================================================================
+# SIGNAL ENGINE PARAMETERS
+# =============================================================================
+signal_engine:
+  # Momentum timeframe weights (v3: favor longer lookbacks)
+  momentum_weights:
+    tf_30s: 0.20
+    tf_60s: 0.30
+    tf_120s: 0.35
+    tf_240s: 0.15
+
+  # Trend filter
+  trend_window_seconds: 600  # 10-minute trend
+
+  # Signal thresholds
+  dislocation_btc_move_min: 0.0005  # 0.05% BTC move required
+  dislocation_confidence_min: 0.45
+  directional_confidence_min: 0.45
+  maker_confidence_min: 0.45
+
+  # Fair probability calculation
+  fair_prob_capped: 0.80
+  fair_prob_time_decay_factor: 5.0
+
+  # Time filters
+  directional_final_seconds: 30  # Only fire in final 30s
+  btc_move_noise_threshold: 0.0003  # 0.03% = noise
+  noise_time_remaining: 90  # Reject if >90s remaining
+
+# =============================================================================
+# POSITION SIZING (FRACTIONAL KELLY)
+# =============================================================================
+position_sizing:
+  kelly_fraction: 0.25  # Quarter-Kelly cap
+  size_factor_high: 1.0
+  size_factor_low: 0.5
+
+  # Edge thresholds
+  min_edge_for_trade: 0.03  # 3% minimum (covers fees)
+  min_edge_after_losses: 0.05  # 5% after 3+ consecutive losses
+
+  # Consecutive loss tracking
+  consecutive_loss_threshold: 3
+
+# =============================================================================
+# RISK MANAGEMENT
+# =============================================================================
+risk_management:
+  # Capital preservation
+  starting_balance_min: 0.30  # Only trade if cash > 30% of starting
+  daily_loss_limit_pct: 0.20  # 20% max daily loss
+
+  # Circuit breakers
+  max_trades_per_session: 50
+  circuit_breaker_enabled: true
+
+  # No duplicate bets
+  dedup_enabled: true
+
+# =============================================================================
+# EXECUTION PARAMETERS
+# =============================================================================
+execution:
+  # Market selection
+  market_slug_pattern: "btc-updown-5m-{unix_timestamp}"
+  market_resolution_seconds: 300  # 5 minutes
+
+  # Order types
+  maker_rebate: 0.20  # 20% maker rebate on Polymarket
+  maker_spread_cents: 0.02  # 2 cents below ask
+
+  # Slippage model
+  slippage_per_token_cents: 0.03  # 2-4 cents realistic
+  fee_at_50_cents: 0.0156  # 1.56%
+
+  # Retry logic
+  max_retries: 3
+  retry_delay_ms: 100
+
+# =============================================================================
+# LLM FILTER PARAMETERS
+# =============================================================================
+llm_filter:
+  enabled: true
+  model: "kimi"  # Moonshot Kimi
+  temperature: 0.3
+  timeout_seconds: 10
+
+  # Hard rules (encoded in system prompt)
+  reject_opposing_trend_threshold: 0.001  # 0.10% BTC move override
+  dont_fight_high_price: 0.60  # Don't bet against >60% priced side
+
+  # Error handling
+  fail_to_reject: true  # Default to REJECT on LLM failure
+
+# =============================================================================
+# BACKTEST PARAMETERS
+# =============================================================================
+backtest:
+  start_date: "2025-01-01"
+  end_date: "2026-03-26"
+  initial_balance: 1000.0  # USDC
+
+  # Transaction costs
+  taker_fee_pct: 0.02  # 2% Polymarket fee
+  slippage_cents: 0.03  # 3 cents per token
+
+  # Data sources
+  btc_price_source: "binance"  # or "simulated"
+  polymarket_api: "https://clob.polymarket.com"
+
+# =============================================================================
+# REPORTING
+# =============================================================================
+reporting:
+  log_level: "INFO"
+  save_trades: true
+  plot_equity: true
+  plot_drawdown: true
+  plot_monthly_returns: true
