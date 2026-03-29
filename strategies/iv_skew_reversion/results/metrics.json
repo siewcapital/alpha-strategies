@@ -1,0 +1,16 @@
+{
+  "total_trades": 14,
+  "winning_trades": 0,
+  "losing_trades": 14,
+  "sharpe": 0.0,
+  "sortino": 0.0,
+  "max_drawdown": 0.20392808188808517,
+  "win_rate": 0.0,
+  "avg_win": 0,
+  "avg_loss": -15507.283059488052,
+  "profit_factor": 0.0,
+  "total_pnl": -217101.96283283274,
+  "total_return": -0.21710196283283273,
+  "avg_daily_return": 0.0,
+  "avg_days_held": 1.0
+}

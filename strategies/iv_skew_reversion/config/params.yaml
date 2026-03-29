@@ -1,0 +1,56 @@
+# IV Skew Mean Reversion Strategy Parameters
+
+# === SIGNAL GENERATION ===
+signals:
+  # Skew thresholds (negative = puts expensive)
+  skew_entry_long: -20.0    # Enter long skew reversion when skew > -20%
+  skew_entry_short: -50.0   # Enter short skew reversion when skew < -50%
+  skew_mean_reversion: -35.0  # Target skew for take profit
+  skew_stop_loss: -65.0     # Exit if skew widens past -65% (additional 15pp)
+
+  # Volatility regime filters
+  rv_min_entry: 50.0        # Minimum RV% to enter ( annualized)
+  rv_max_entry: 200.0      # Maximum RV% to enter
+  iv_rv_spread_min: 5.0     # Minimum IV - RV spread to confirm edge
+
+  # Options parameters
+  option_dte_min: 14        # Minimum days to expiry
+  option_dte_max: 35       # Maximum days to expiry
+  moneyness_otm: 0.90      # OTM put moneyness (10% OTM)
+  moneyness_atm: 1.00       # ATM straddle moneyness
+
+# === POSITION SIZING ===
+position:
+  portfolio_risk_per_trade: 0.02   # 2% of portfolio per trade
+  max_portfolio_options_exposure: 0.20  # Max 20% notional options exposure
+  max_concurrent_trades: 3         # Max 3 skew trades simultaneously
+  delta_hedge_ratio: 0.50          # Hedge 50% of delta exposure
+
+# === RISK MANAGEMENT ===
+risk:
+  max_loss_per_trade: 0.03         # 3% hard stop per trade
+  max_drawdown_portfolio: 0.20     # 20% portfolio drawdown cutoff
+  skew_widening_stop: 15.0         # Exit if skew widens additional 15pp
+  time_stop_days: 21                # Maximum holding period
+
+  # Circuit breakers
+  max_daily_loss_cutoff: 0.05      # Pause if 5% daily loss
+  vol_spike_multiplier: 2.0       # Pause if RV spikes 2x entry RV
+
+# === BACKTEST PARAMETERS ===
+backtest:
+  start_date: "2021-01-01"
+  end_date: "2026-03-29"
+  initial_capital: 1_000_000
+  transaction_cost_bps: 15          # 15 bps per trade (options expensive)
+  slippage_bps: 5                   # 5 bps execution slippage
+
+# === SYNTHETIC DATA GENERATION ===
+synthetic:
+  seed: 42
+  vol_surface_btc_base: 0.80       # Base vol for BTC
+  vol_surface_eth_base: 1.00        # Base vol for ETH
+  skew_mean: -35.0                  # Mean skew level
+  skew_std: 12.0                    # Std dev of skew
+  crisis_frequency: 0.08            # Probability of crisis event per day
+  crisis_skew_impact: 25.0          # Additional skew during crisis (pp)
