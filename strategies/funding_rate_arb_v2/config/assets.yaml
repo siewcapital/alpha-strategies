@@ -1,0 +1,143 @@
+# Asset Universe Configuration
+# Defines trading pairs, exchanges, and asset-specific parameters
+
+assets:
+  BTCUSDT:
+    name: "Bitcoin"
+    category: "major"
+    min_spread_annualized: 0.10  # Lower threshold for BTC (more stable)
+    max_position_usd: 100000     # Larger positions for liquid assets
+    default_leverage: 3.0        # Higher leverage for lower volatility
+    exchanges:
+      - binance
+      - bybit
+      - okx
+      - dYdX
+
+  ETHUSDT:
+    name: "Ethereum"
+    category: "major"
+    min_spread_annualized: 0.12
+    max_position_usd: 80000
+    default_leverage: 3.0
+    exchanges:
+      - binance
+      - bybit
+      - okx
+      - dYdX
+
+  SOLUSDT:
+    name: "Solana"
+    category: "alt"
+    min_spread_annualized: 0.15
+    max_position_usd: 50000
+    default_leverage: 2.0
+    exchanges:
+      - binance
+      - bybit
+      - okx
+
+  AVAXUSDT:
+    name: "Avalanche"
+    category: "alt"
+    min_spread_annualized: 0.18
+    max_position_usd: 30000
+    default_leverage: 2.0
+    exchanges:
+      - binance
+      - bybit
+
+  DOGEUSDT:
+    name: "Dogecoin"
+    category: "meme"
+    min_spread_annualized: 0.25  # Higher threshold for volatile meme coins
+    max_position_usd: 20000
+    default_leverage: 2.0
+    exchanges:
+      - binance
+      - bybit
+      - okx
+
+  XRPUSDT:
+    name: "Ripple"
+    category: "alt"
+    min_spread_annualized: 0.15
+    max_position_usd: 30000
+    default_leverage: 2.0
+    exchanges:
+      - binance
+      - bybit
+      - okx
+
+  LINKUSDT:
+    name: "Chainlink"
+    category: "alt"
+    min_spread_annualized: 0.18
+    max_position_usd: 25000
+    default_leverage: 2.0
+    exchanges:
+      - binance
+      - bybit
+      - okx
+
+  MATICUSDT:
+    name: "Polygon"
+    category: "alt"
+    min_spread_annualized: 0.18
+    max_position_usd: 25000
+    default_leverage: 2.0
+    exchanges:
+      - binance
+      - bybit
+      - okx
+
+# Category-wide settings
+categories:
+  major:
+    description: "Top-tier liquid assets (BTC, ETH)"
+    risk_weight: 0.8
+    max_concentration: 0.50  # Max 50% of portfolio in major
+  
+  alt:
+    description: "Established altcoins"
+    risk_weight: 1.0
+    max_concentration: 0.40
+  
+  meme:
+    description: "Meme coins (higher volatility)"
+    risk_weight: 1.5
+    max_concentration: 0.20
+
+# Exchange-specific settings
+exchanges:
+  binance:
+    maker_fee: 0.0002  # 0.02%
+    taker_fee: 0.0005  # 0.05%
+    funding_interval: "8h"
+    max_leverage: 125
+    min_order_size_usd: 100
+    api_weight_limit: 1200  # requests per minute
+    
+  bybit:
+    maker_fee: 0.0002
+    taker_fee: 0.00055
+    funding_interval: "8h"
+    max_leverage: 100
+    min_order_size_usd: 100
+    api_weight_limit: 120
+    
+  okx:
+    maker_fee: 0.0002
+    taker_fee: 0.0005
+    funding_interval: "8h"
+    max_leverage: 125
+    min_order_size_usd: 100
+    api_weight_limit: 200
+    
+  dYdX:
+    maker_fee: 0.0002
+    taker_fee: 0.0005
+    funding_interval: "1h"  # Hourly funding on dYdX
+    max_leverage: 20
+    min_order_size_usd: 10
+    api_weight_limit: 100

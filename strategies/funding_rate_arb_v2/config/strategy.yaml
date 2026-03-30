@@ -1,0 +1,46 @@
+# Strategy Configuration - Funding Rate Arbitrage V2
+
+# Capital Settings
+initial_capital: 100000
+max_position_usd: 50000
+min_position_usd: 5000
+default_leverage: 2.0
+max_utilization: 0.5
+
+# Entry/Exit Thresholds (as decimal annualized returns)
+# 0.15 = 15% annualized minimum spread to enter
+entry_threshold: 0.15
+
+# 0.05 = 5% annualized spread to exit (convergence)
+exit_threshold: 0.05
+
+# Funding Analysis
+lookback_window: 30  # Days of history for OU parameter estimation
+min_persistence: 0.7  # Minimum AR(1) coefficient for entry
+flip_threshold: 0.3  # Max probability of funding flip to enter
+
+# Position Management
+max_positions: 5
+max_hold_hours: 48  # Time stop after 48 hours (6 funding periods)
+
+# Risk Management
+max_drawdown: 0.10  # 10% max drawdown circuit breaker
+daily_loss_limit: 0.03  # 3% daily loss limit
+max_consecutive_losses: 3
+
+# Execution
+use_maker_only: true
+execution_delay_ms: 500
+
+# Asset Universe (will be overridden by assets.yaml)
+default_exchanges:
+  - binance
+  - bybit
+  - okx
+
+default_symbols:
+  - BTCUSDT
+  - ETHUSDT
+  - SOLUSDT
+  - AVAXUSDT
+  - DOGEUSDT
