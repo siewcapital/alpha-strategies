@@ -1,0 +1,93 @@
+# Funding Rate Arbitrage Configuration
+
+# Exchange Configuration
+exchanges:
+  - name: binance
+    api_key: "${BINANCE_API_KEY}"
+    api_secret: "${BINANCE_API_SECRET}"
+    testnet: true
+  - name: bybit
+    api_key: "${BYBIT_API_KEY}"
+    api_secret: "${BYBIT_API_SECRET}"
+    testnet: true
+  - name: okx
+    api_key: "${OKX_API_KEY}"
+    api_secret: "${OKX_API_SECRET}"
+    testnet: true
+
+# Strategy Parameters
+strategy:
+  # Minimum funding rate differential to trigger signal (as decimal)
+  # e.g., 0.0001 = 0.01% per 8-hour period
+  min_funding_diff: 0.0001
+  
+  # Minimum expected annual return after costs (as decimal)
+  min_expected_arb_return: 0.05
+  
+  # Maximum leverage to use
+  max_leverage: 2.5
+  
+  # Maximum position size as fraction of portfolio
+  max_position_size: 0.10
+  
+  # Maximum number of concurrent arbitrage positions
+  max_concurrent_positions: 5
+  
+  # Rebalance interval in seconds
+  rebalance_interval: 300
+  
+  # Maximum holding period in seconds (7 days)
+  max_holding_period: 604800
+
+# Risk Management
+risk:
+  # Stop loss on portfolio (as decimal)
+  max_drawdown_stop: 0.05
+  
+  # Minimum margin buffer to avoid liquidation (as decimal)
+  min_margin_buffer: 0.50
+  
+  # Maximum portfolio exposure to single asset
+  max_single_asset_exposure: 0.15
+  
+  # Correlation threshold to avoid correlated positions
+  correlation_threshold: 0.70
+
+# Costs (as decimal)
+costs:
+  # Trading fee per trade (maker)
+  maker_fee: 0.0004
+  
+  # Trading fee per trade (taker)
+  taker_fee: 0.0006
+  
+  # Expected slippage (as decimal)
+  expected_slippage: 0.0005
+  
+  # Borrowing rate (annual, for spot margin)
+  borrowing_rate: 0.08
+
+# Backtest Parameters
+backtest:
+  start_date: "2023-01-01"
+  end_date: "2026-03-24"
+  initial_capital: 100000
+  
+  # Assets to backtest
+  assets:
+    - BTC
+    - ETH
+    - SOL
+    - BNB
+    - XRP
+    - ADA
+    - DOGE
+    - AVAX
+    - DOT
+    - MATIC
+  
+  # Include funding from these exchanges
+  exchange_pairs:
+    - [binance, bybit]
+    - [binance, okx]
+    - [bybit, okx]
