@@ -1,0 +1,56 @@
+# Configuration for Multi-Factor Regime-Adaptive Strategy
+
+# Regime Detection Parameters
+adx_period: 14                    # ADX lookback period
+rsi_period: 14                    # RSI lookback period
+atr_period: 14                    # ATR lookback period
+atr_percentile_period: 100       # Lookback for ATR percentile
+
+# Trend-Following Factor
+tf_fast: 20                       # Fast SMA period
+tf_slow: 50                       # Slow SMA period
+
+# Mean-Reversion Factor
+mr_period: 20                     # Lookback for Z-score
+mr_z_threshold: 2.0               # Z-score threshold for entry
+
+# Volatility Breakout Factor
+vb_period: 20                     # ATR lookback
+vb_threshold: 2.0                 # ATR expansion threshold
+
+# Momentum Factor
+mom_short: 10                     # Short ROC period
+mom_long: 30                       # Long ROC period
+
+# Signal Generation
+signal_threshold: 0.3             # Min composite score for entry
+stop_loss_atr: 2.0                # Stop loss in ATR multiples
+trailing_stop_atr: 1.5            # Trailing stop in ATR multiples
+time_stop_bars: 10               # Max bars to hold
+
+# Risk Management
+max_kelly: 0.25                   # Max Kelly fraction (conservative)
+max_position_pct: 0.20            # Max position as % of portfolio
+max_leverage: 3.0                 # Max leverage
+max_drawdown: 0.20                # Circuit breaker at this drawdown
+win_rate: 0.55                    # Historical win rate
+avg_win: 0.02                     # Historical avg win (fraction)
+avg_loss: 0.01                    # Historical avg loss (fraction)
+
+# Portfolio Settings
+max_assets: 5                     # Max simultaneous positions
+rebalance_frequency: 1            # Rebalance every N bars
+
+# Backtest Settings
+initial_capital: 100000           # Starting capital
+transaction_cost_pct: 0.001        # 0.1% per trade
+slippage_pct: 0.0005              # 0.05% slippage
+commission_pct: 0.0               # Commission (already in spread)
+
+# Assets to trade (for multi-asset backtest)
+assets:
+  - BTC
+  - ETH
+  - BNB
+  - SOL
+  - XRP
