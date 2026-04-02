@@ -1,0 +1,14 @@
+{
+  "total_trades": 88,
+  "winning_trades": 37,
+  "losing_trades": 51,
+  "win_rate": 0.42045454545454547,
+  "avg_trade_pnl": -54.36124091816328,
+  "avg_win": 231.26690875095508,
+  "avg_loss": -261.5816632271315,
+  "total_return": -0.04783789200798361,
+  "profit_factor": 0.6414129832583028,
+  "sharpe_ratio": -0.6293888395831627,
+  "max_drawdown": 0.05245585001724918,
+  "current_portfolio": 95216.21079920164
+}

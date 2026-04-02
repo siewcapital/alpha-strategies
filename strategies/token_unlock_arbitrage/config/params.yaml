@@ -1,0 +1,65 @@
+# Token Unlock Arbitrage Strategy Parameters
+# ===========================================
+
+# Capital & Position Sizing
+initial_capital: 100000
+max_position_pct: 0.10           # Max 10% per trade
+max_concurrent_positions: 3       # Max 3 simultaneous positions
+
+# Entry/Exit Timing (based on research)
+min_unlock_pct: 1.0              # Minimum 1% of supply to trade
+entry_days_before: 2             # Enter 2 days before unlock (research optimal)
+exit_days_after: 4               # Exit day 4 after unlock
+
+# Risk Management
+stop_loss_pct: 0.02              # 2% stop loss
+profit_target_multiplier: 3.0    # Take profit at 3x expected move
+trailing_stop_pct: 0.01          # Optional trailing stop
+
+# Kelly Criterion
+default_win_rate: 0.65           # Base win rate estimate
+kelly_fraction: 0.25             # Quarter-Kelly for safety
+
+# Trading Costs
+trading_cost_pct: 0.001          # 0.1% round-trip
+slippage_pct: 0.0005             # 0.05% slippage estimate
+
+# Liquidity Filters
+min_daily_volume: 1000000        # $1M minimum daily volume
+min_market_cap: 50000000         # $50M minimum market cap
+
+# Circuit Breakers
+max_drawdown_pct: 0.20           # Stop trading at 20% drawdown
+daily_loss_limit_pct: 0.03       # 3% daily loss limit
+cooldown_hours: 24               # Cooldown after circuit breaker
+
+# Data Sources
+preferred_data_source: "manual"  # manual, coingecko, tokenunlocks
+coingecko_api_key: null
+tokenunlocks_api_key: null
+
+# Backtest Settings
+backtest_start_date: "2022-01-01"
+backtest_end_date: "2026-01-01"
+random_seed: 42
+
+# Tokens to Trade
+tokens:
+  - SOL
+  - AVAX
+  - UNI
+  - ARB
+  - OP
+  - SUI
+  - APT
+  - DYDX
+  - AXS
+  - IMX
+  - CRV
+  - LINK
+  - LDO
+  - RNDR
+  - MATIC
+
+# Correlation Thresholds
+max_correlation: 0.70            # Don't trade highly correlated tokens
