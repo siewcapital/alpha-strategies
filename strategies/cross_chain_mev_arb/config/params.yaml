@@ -1,0 +1,171 @@
+# Cross-Chain MEV Arbitrage Configuration
+# All tunable parameters
+
+# ─── Chains ────────────────────────────────────────────────────────────────
+chains:
+  ethereum:
+    chain_id: 1
+    rpc_url: "${ETH_RPC_URL}"
+    explorer: "https://api.etherscan.io/api"
+    explorer_key: "${ETHERSCAN_KEY}"
+    gas_price_type: "base_fee"  # use base_fee + priority_fee
+    priority_fee_gwei: 2.0
+    
+  arbitrum:
+    chain_id: 42161
+    rpc_url: "${ARB_RPC_URL}"
+    explorer: "https://api.arbiscan.io/api"
+    explorer_key: "${ARBISCAN_KEY}"
+    gas_price_type: "l2_gas"  # L2 gas pricing
+    priority_fee_gwei: 0.1
+    
+  optimism:
+    chain_id: 10
+    rpc_url: "${OP_RPC_URL}"
+    explorer: "https://api-optimistic.etherscan.io/api"
+    gas_price_type: "l2_gas"
+    priority_fee_gwei: 0.05
+    
+  base:
+    chain_id: 8453
+    rpc_url: "${BASE_RPC_URL}"
+    explorer: "https://api.basescan.org/api"
+    gas_price_key: "${BASESCAN_KEY}"
+    gas_price_type: "l2_gas"
+    priority_fee_gwei: 0.1
+
+# ─── Trading ────────────────────────────────────────────────────────────────
+trading:
+  # Asset pairs to monitor (base token = same asset across chains)
+  pairs:
+    - base: "WETH"
+      quote: "USDC"
+      min_trade_usd: 5000
+      max_trade_usd: 500000
+    - base: "WBTC"
+      quote: "USDC"
+      min_trade_usd: 10000
+      max_trade_usd: 500000
+    - base: "USDC"
+      quote: "USDCe"  # USDC.e on Arbitrum
+      min_trade_usd: 5000
+      max_trade_usd: 200000
+
+  # Arbitrage configuration
+  arbitrage:
+    # Spread thresholds
+    min_spread_bps: 15          # Minimum spread in bps (0.15%) to enter
+    zscore_entry_threshold: 2.0  # Z-score threshold for spread entry
+    zscore_exit_threshold: 0.5    # Z-score exit threshold
+    lookback_periods: 500         # Rolling window for z-score
+    
+    # Position sizing
+    Kelly_fraction: 0.25         # Fractional Kelly (25% = conservative)
+    max_position_pct: 0.15      # Max 15% of capital per trade
+    min_trade_size_usd: 5000     # Minimum viable trade size
+    
+    # Time limits
+    max_hold_seconds: 1800       # 30 minutes max hold
+    cooldown_seconds: 60          # Cooldown between same-pair trades
+
+# ─── Bridges ───────────────────────────────────────────────────────────────
+bridges:
+  stargate:
+    enabled: true
+    router: "0x8731d54E9D02c28676787391fD527791c3260FC7"
+    pool: "0xdfa2fDbE922D9d5d78fF2A1c0F3B9B91E9C9A5E8"  # Example USDC pool
+    fee_bps: 6       # 0.06%
+    dest_gas: 300000  # Estimated destination gas
+    max_slippage_bps: 50
+    
+  across:
+    enabled: true
+    spoke_pool: "0x3h1p5ySLTuxqdcA67D5fZJ4W8yTYDvpjWBf"
+    relayer_fee_bps: 10   # 0.10%
+    max_slippage_bps: 30
+    
+  synapse:
+    enabled: true
+    router: "0x2796317b0fF8538F253012862c06787Adfb8cEb6"
+    fee_bps: 4       # 0.04%
+    max_slippage_bps: 50
+    
+  wormhole:
+    enabled: false   # Too slow for most arb opportunities
+    fee_usd: 3.0
+    finality_time_secs: 900
+
+# ─── DEXes (per chain) ─────────────────────────────────────────────────────
+dexes:
+  ethereum:
+    - name: "uniswap_v3"
+      router: "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45"
+      factory: "0x1F98431c8aD98523631AE4a59f267346ea31F984"
+      fee_tiers: [500, 3000, 10000]  # bps
+    - name: "curve"
+      router: "0x99a58482BD75cbab83b27ECecCA1Ac1D7F44a86"
+      pools:
+        USDC/USDT: "0x5f4e3f2b5B4b5A9f8C5c4E3F2b5A4B5C4E3F2b5A"
+        
+  arbitrum:
+    - name: "uniswap_v3"
+      router: "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45"
+      factory: "0x1F98431c8aD98523631AE4a59f267346ea31F984"
+      fee_tiers: [500, 3000, 10000]
+    - name: "sushiswap"
+      router: "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"
+      fee_tiers: [3000]  # standard
+
+# ─── Risk Management ────────────────────────────────────────────────────────
+risk:
+  # Position limits
+  max_daily_trades: 20
+  max_concurrent_trades: 3
+  max_bridge_exposure_pct: 0.20   # Max 20% capital in transit
+  max_exposure_per_bridge_pct: 0.10  # 10% per specific bridge
+  
+  # Loss limits
+  max_daily_loss_pct: 0.03       # 3% daily loss limit
+  max_drawdown_pct: 0.10        # 10% portfolio drawdown
+  stop_loss_bps: 50             # Stop loss at 0.50% adverse move
+  
+  # Circuit breakers
+  gas_spike_multiplier: 3.0     # Pause if gas > 3x 24hr avg
+  spread_volatility_pause: true  # Pause during extreme spread vol
+  bridge_risk_threshold: 7.0     # Max bridge risk score (0-10)
+  
+  # MEV protection
+  use_flashbots: true
+  flashbots_rpc: "https://rpc.mevboost.org"
+  private_mempool: true
+  
+  # Gas settings
+  max_gas_price_wei: 200000000000  # 200 gwei hard cap
+  max_gas_cost_per_trade_usd: 200   # $200 max gas per trade
+
+# ─── Backtest ──────────────────────────────────────────────────────────────
+backtest:
+  start_date: "2021-01-01"
+  end_date: "2026-04-01"
+  
+  # Data settings
+  price_data_source: "synthetic"
+  synthetic_spread_vol: 0.001   # Daily spread vol (0.1%)
+  synthetic_spread_mean: 0.0002 # Mean spread (0.02%)
+  cross_chain_events_per_year: 150  # Significant spread events
+  
+  # Costs (realistic)
+  maker_fee_bps: 3.0     # 0.03% maker fee
+  taker_fee_bps: 5.0    # 0.05% taker fee
+  bridge_fee_bps: 8.0   # 0.08% average bridge fee
+  slippage_bps: 5.0     # 0.05% slippage
+  gas_simulation: "realistic"  # realistic | conservative | aggressive
+  
+  # Initial capital
+  initial_capital_usd: 100000
+  
+  # Metrics
+  calculate_sharpe: true
+  calculate_sortino: true
+  calculate_max_drawdown: true
+  confidence_level: 0.95
